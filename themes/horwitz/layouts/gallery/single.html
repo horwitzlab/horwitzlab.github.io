@@ -6,8 +6,16 @@
 </div>
 <div class="page-content">
   {{ .Content }}
-  <div class="gallery-note">
-    <p>Gallery images are stored on the lab server. Add photos to the <code>static/images/gallery/</code> folder and update <code>data/gallery.yaml</code> to have them appear here.</p>
+  {{ $gallery := site.Data.gallery }}
+  {{ if $gallery.photos }}
+  <div class="gallery-grid">
+    {{ range $gallery.photos }}
+    <div class="gallery-item">
+      <img src="/images/gallery/{{ .file }}" alt="{{ .caption }}" loading="lazy">
+      {{ if .caption }}<p class="gallery-caption">{{ .caption }}</p>{{ end }}
+    </div>
+    {{ end }}
   </div>
+  {{ end }}
 </div>
 {{ end }}
