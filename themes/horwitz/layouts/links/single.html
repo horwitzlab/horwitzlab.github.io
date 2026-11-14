@@ -1,0 +1,17 @@
+{{ define "main" }}
+<div class="page-header">
+  <div class="page-header-inner">
+    <h1>Useful Links</h1>
+  </div>
+</div>
+<div class="page-content">
+  {{ range .Site.Data.links }}
+  <h2 style="color:var(--uw-purple); font-size:1.1rem; margin:1.5rem 0 0.5rem;">{{ .category }}</h2>
+  <ul class="links-list">
+    {{ range .items }}
+    <li><a href="{{ .url }}" target="_blank" rel="noopener">{{ .label }}</a></li>
+    {{ end }}
+  </ul>
+  {{ end }}
+</div>
+{{ end }}

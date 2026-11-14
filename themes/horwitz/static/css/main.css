@@ -1,0 +1,333 @@
+/* ============================================================
+   Horwitz Lab — main stylesheet
+   Clean, fast, no dependencies
+   ============================================================ */
+
+:root {
+  --uw-purple:   #4b2e83;
+  --uw-gold:     #b7a57a;
+  --uw-purple-dark: #391e6a;
+  --text:        #1a1a1a;
+  --text-muted:  #555;
+  --bg:          #fff;
+  --bg-alt:      #f7f5f2;
+  --border:      #e0dcd6;
+  --link:        #4b2e83;
+  --link-hover:  #391e6a;
+  --max-width:   900px;
+  --font-sans:   "Georgia", "Times New Roman", serif;
+  --font-ui:     system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+/* Reset */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { font-size: 17px; scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-ui);
+  color: var(--text);
+  background: var(--bg);
+  line-height: 1.65;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ---- Links ---- */
+a { color: var(--link); text-decoration: none; }
+a:hover { color: var(--link-hover); text-decoration: underline; }
+
+/* ---- Site header ---- */
+.site-header {
+  background: var(--uw-purple);
+  color: #fff;
+  padding: 0 1.5rem;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.25);
+}
+
+.header-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  min-height: 60px;
+  flex-wrap: wrap;
+  padding: 0.5rem 0;
+}
+
+.site-title {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+}
+.site-title:hover { color: var(--uw-gold); text-decoration: none; }
+
+.site-title .subtitle {
+  font-size: 0.75rem;
+  font-weight: 400;
+  opacity: 0.75;
+  display: block;
+  letter-spacing: 0;
+}
+
+/* ---- Nav ---- */
+.site-nav { display: flex; gap: 0.25rem; flex-wrap: wrap; align-items: center; }
+
+.site-nav a {
+  color: rgba(255,255,255,0.88);
+  font-size: 0.88rem;
+  font-weight: 500;
+  padding: 0.3rem 0.65rem;
+  border-radius: 4px;
+  transition: background 0.15s, color 0.15s;
+}
+.site-nav a:hover, .site-nav a.active {
+  background: rgba(255,255,255,0.15);
+  color: #fff;
+  text-decoration: none;
+}
+
+/* ---- Hero (home page) ---- */
+.hero {
+  background: var(--uw-purple-dark);
+  color: #fff;
+  padding: 4rem 1.5rem 3.5rem;
+  text-align: center;
+}
+.hero h1 {
+  font-size: 2.4rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.5rem;
+}
+.hero .tagline {
+  font-size: 1.15rem;
+  opacity: 0.82;
+  max-width: 620px;
+  margin: 0 auto 1.75rem;
+  line-height: 1.5;
+}
+.hero-links { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+.btn {
+  display: inline-block;
+  padding: 0.55rem 1.3rem;
+  border-radius: 5px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: opacity 0.15s;
+}
+.btn:hover { opacity: 0.85; text-decoration: none; }
+.btn-primary { background: var(--uw-gold); color: #1a1a1a; }
+.btn-outline { border: 2px solid rgba(255,255,255,0.6); color: #fff; }
+
+/* ---- Research highlights on home ---- */
+.home-section {
+  max-width: var(--max-width);
+  margin: 3rem auto;
+  padding: 0 1.5rem;
+}
+.home-section h2 {
+  font-size: 1.5rem;
+  color: var(--uw-purple);
+  margin-bottom: 1rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 2px solid var(--uw-gold);
+  display: inline-block;
+}
+.home-section p { color: var(--text-muted); font-size: 1rem; max-width: 72ch; }
+
+.topics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 1.25rem;
+  margin-top: 1.25rem;
+}
+.topic-card {
+  background: var(--bg-alt);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1.25rem 1.4rem;
+}
+.topic-card h3 { font-size: 1rem; color: var(--uw-purple); margin-bottom: 0.4rem; }
+.topic-card p { font-size: 0.88rem; color: var(--text-muted); line-height: 1.55; }
+
+/* ---- Page layout ---- */
+.page-wrap {
+  flex: 1;
+}
+
+.page-header {
+  background: var(--bg-alt);
+  border-bottom: 1px solid var(--border);
+  padding: 2rem 1.5rem 1.5rem;
+}
+.page-header-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+.page-header h1 {
+  font-size: 2rem;
+  color: var(--uw-purple);
+  letter-spacing: -0.02em;
+}
+
+.page-content {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 2.5rem 1.5rem;
+}
+
+/* ---- Members ---- */
+.member-list { display: flex; flex-direction: column; gap: 2.5rem; }
+
+.member-card {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  gap: 1.75rem;
+  padding-bottom: 2.5rem;
+  border-bottom: 1px solid var(--border);
+}
+.member-card:last-child { border-bottom: none; padding-bottom: 0; }
+
+.member-photo {
+  width: 180px;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--bg-alt);
+}
+.member-photo-placeholder {
+  width: 180px;
+  height: 180px;
+  border-radius: 8px;
+  background: var(--bg-alt);
+  border: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+  font-size: 0.8rem;
+}
+
+.member-info h2 {
+  font-size: 1.15rem;
+  color: var(--uw-purple);
+  margin-bottom: 0.2rem;
+}
+.member-role {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  font-weight: 500;
+  margin-bottom: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.member-bio {
+  font-size: 0.95rem;
+  color: var(--text);
+  line-height: 1.65;
+}
+.member-links { margin-top: 0.75rem; display: flex; gap: 0.75rem; flex-wrap: wrap; }
+.member-links a { font-size: 0.85rem; color: var(--link); }
+
+@media (max-width: 600px) {
+  .member-card {
+    grid-template-columns: 1fr;
+  }
+  .member-photo, .member-photo-placeholder {
+    width: 140px;
+    height: 140px;
+  }
+}
+
+/* ---- Publications ---- */
+.pub-year-section { margin-bottom: 2.5rem; }
+.pub-year {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--uw-purple);
+  margin-bottom: 1rem;
+  padding-bottom: 0.3rem;
+  border-bottom: 2px solid var(--uw-gold);
+  display: inline-block;
+}
+.pub-list { list-style: none; display: flex; flex-direction: column; gap: 0.75rem; }
+.pub-item {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  padding-left: 1rem;
+  border-left: 3px solid var(--border);
+  transition: border-color 0.15s;
+}
+.pub-item:hover { border-left-color: var(--uw-purple); }
+.pub-item a { color: var(--link); font-weight: 500; }
+.pub-journal { color: var(--text-muted); font-style: italic; }
+
+/* ---- Gallery ---- */
+.gallery-note {
+  background: var(--bg-alt);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 2rem;
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  margin-top: 1rem;
+}
+
+/* ---- Links page ---- */
+.links-list { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; margin-top: 1rem; }
+.links-list a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 1rem;
+  padding: 0.4rem 0;
+  color: var(--link);
+  font-weight: 500;
+}
+.links-list a:hover { text-decoration: underline; }
+
+/* ---- Footer ---- */
+.site-footer {
+  background: var(--uw-purple);
+  color: rgba(255,255,255,0.75);
+  padding: 2rem 1.5rem;
+  margin-top: auto;
+  font-size: 0.85rem;
+}
+.footer-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+.footer-inner h3 { color: var(--uw-gold); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.5rem; }
+.footer-inner p, .footer-inner a { color: rgba(255,255,255,0.75); font-size: 0.85rem; line-height: 1.6; }
+.footer-inner a:hover { color: #fff; }
+.footer-bottom {
+  max-width: var(--max-width);
+  margin: 1.5rem auto 0;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(255,255,255,0.15);
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.78rem;
+  color: rgba(255,255,255,0.45);
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+@media (max-width: 540px) {
+  .footer-inner { grid-template-columns: 1fr; gap: 1.25rem; }
+  .hero h1 { font-size: 1.8rem; }
+}

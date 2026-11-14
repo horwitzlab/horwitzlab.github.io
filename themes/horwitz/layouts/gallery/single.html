@@ -1,0 +1,13 @@
+{{ define "main" }}
+<div class="page-header">
+  <div class="page-header-inner">
+    <h1>Gallery</h1>
+  </div>
+</div>
+<div class="page-content">
+  {{ .Content }}
+  <div class="gallery-note">
+    <p>Gallery images are stored on the lab server. Add photos to the <code>static/images/gallery/</code> folder and update <code>data/gallery.yaml</code> to have them appear here.</p>
+  </div>
+</div>
+{{ end }}

@@ -1,0 +1,22 @@
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div>
+      <h3>Horwitz Lab</h3>
+      <p>Department of <a href="{{ .Site.Params.departmentURL }}">Neurobiology &amp; Biophysics</a><br>
+      <a href="https://wanprc.uw.edu/">Washington National Primate Research Center</a><br>
+      University of Washington</p>
+    </div>
+    <div>
+      <h3>Contact</h3>
+      <p>
+        <a href="{{ .Site.Params.addressURL }}">{{ .Site.Params.address }}</a><br>
+        <a href="tel:{{ .Site.Params.phone }}">{{ .Site.Params.phone }}</a><br>
+        <a href="mailto:{{ .Site.Params.email }}">{{ .Site.Params.email }}</a>
+      </p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© {{ now.Year }} Horwitz Lab, University of Washington</span>
+    <span>Built with <a href="https://gohugo.io/">Hugo</a></span>
+  </div>
+</footer>

@@ -1,0 +1,40 @@
+baseURL: "https://horwitzlab.github.io/"
+languageCode: "en-us"
+title: "Horwitz Lab"
+theme: "horwitz"
+
+params:
+  description: "Gregory Horwitz, PhD | Neurobiology & Biophysics | University of Washington"
+  labPI: "Gregory Horwitz"
+  department: "Neurobiology & Biophysics"
+  university: "University of Washington"
+  email: "Horwitzlab@gmail.com"
+  phone: "206-616-0731"
+  address: "HSB I714, I728, G230"
+  addressURL: "http://uw.edu/maps/?hsb"
+  github: "https://github.com/horwitzlab"
+  departmentURL: "https://nbio.uw.edu/"
+  wanprcURL: "https://wanprc.uw.edu/"
+
+menu:
+  main:
+    - name: Research
+      url: /research/
+      weight: 1
+    - name: Members
+      url: /members/
+      weight: 2
+    - name: Publications
+      url: /publications/
+      weight: 3
+    - name: Gallery
+      url: /gallery/
+      weight: 4
+    - name: Links
+      url: /links/
+      weight: 5
+
+markup:
+  goldmark:
+    renderer:
+      unsafe: true

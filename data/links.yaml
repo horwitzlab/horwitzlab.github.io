@@ -1,0 +1,13 @@
+- category: UW Core Facilities
+  items:
+    - label: Keck Microscopy Center
+      url: https://depts.washington.edu/keck/
+    - label: PBIO Intranet
+      url: https://depts.washington.edu/pbint/
+
+- category: Department & Center
+  items:
+    - label: UW Neurobiology & Biophysics
+      url: https://nbio.uw.edu/
+    - label: Washington National Primate Research Center
+      url: https://wanprc.uw.edu/

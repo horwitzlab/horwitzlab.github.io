@@ -1,0 +1,35 @@
+{{ define "main" }}
+<div class="page-header">
+  <div class="page-header-inner">
+    <h1>Lab Members</h1>
+  </div>
+</div>
+<div class="page-content">
+  <div class="member-list">
+    {{ range .Site.Data.members }}
+    <div class="member-card">
+      {{ if .photo }}
+      <img class="member-photo"
+           src="{{ .photo }}"
+           alt="{{ .name }}"
+           loading="lazy">
+      {{ else }}
+      <div class="member-photo-placeholder">Photo coming soon</div>
+      {{ end }}
+      <div class="member-info">
+        <h2>{{ .name }}</h2>
+        <p class="member-role">{{ .role }}</p>
+        <p class="member-bio">{{ .bio }}</p>
+        {{ if .links }}
+        <div class="member-links">
+          {{ range .links }}
+          <a href="{{ .url }}" target="_blank" rel="noopener">{{ .label }}</a>
+          {{ end }}
+        </div>
+        {{ end }}
+      </div>
+    </div>
+    {{ end }}
+  </div>
+</div>
+{{ end }}

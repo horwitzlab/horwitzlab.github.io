@@ -1,0 +1,48 @@
+- name: Greg Horwitz
+  role: Principal Investigator
+  photo: "https://depts.washington.edu/horwitzlab/wordpress/wp-content/uploads/2023/02/Greg-small-1024x1024.jpg"
+  bio: >
+    Greg was born in Eugene, Oregon, grew up in Concord, Massachusetts, and returned to the
+    Pacific Northwest to join the faculty at the University of Washington in 2007. He and members
+    of his lab use tools from neurophysiology, statistics, and viral gene delivery to study the
+    neural basis of vision and perceptual decision-making. Greg is particularly enthusiastic about
+    microfabricated electrode arrays and cis-regulatory elements to achieve experimental access to
+    individual cell types in the visual system.
+  links:
+    - label: UW Neurobiology & Biophysics Profile
+      url: https://nbio.uw.edu/people/entry/ghorwitz/
+    - label: UW Bioengineering Profile
+      url: https://bioe.uw.edu/portfolio-items/greg-horwitz/
+
+- name: Luke Bun
+  role: Graduate Student
+  photo: "https://depts.washington.edu/horwitzlab/wordpress/wp-content/uploads/2023/02/Luke_small-1-1024x1024.jpg"
+  bio: >
+    Luke was born and raised in Seattle. Seeking an academic challenge, at the ripe age of 15,
+    Luke started his undergrad at the UW. While majoring in Neuroscience, he found himself
+    fascinated by neural engineering. Wanting to learn more about the technical side of neural
+    engineering, Luke moved down the street to the Department of Bioengineering to complete a Ph.D.
+    He is interested in the function and computations of complex cells in cortical area V1 and
+    analogous units in convolutional neural networks. Outside the lab, he enjoys playing video
+    games and learning about US and world history.
+
+- name: Padideh Yazdan-Shahmorad
+  role: Graduate Student
+  photo: "https://depts.washington.edu/horwitzlab/wordpress/wp-content/uploads/2023/02/Padideh_small-1024x1024.jpg"
+  bio: >
+    Padideh was born and raised in Esfahan, Iran. She has a bachelor's in Physics from Isfahan
+    University of Technology and a master's in cognitive rehabilitation from Shahid Beheshti
+    University, Tehran. She moved to Seattle to pursue her graduate education in the Electrical
+    and Computer Engineering program in April 2021. She is interested in visual neuroscience.
+    Her research focuses on developing a new tool to inactivate neural activity in a powerful
+    and reversible way, by combining an optical system with a genetically engineered vector.
+    In her free time, Padideh enjoys running, hiking, watching movies and cooking.
+
+- name: Ryan Ressmeyer
+  role: Graduate Student
+  photo: "https://depts.washington.edu/horwitzlab/wordpress/wp-content/uploads/2023/02/RyanR_small.jpg"
+  bio: >
+    A Seattle native, Ryan joined the Horwitz Lab after receiving his degree in Electrical
+    Engineering from Stanford University. Now, Ryan designs high-resolution digital eye trackers
+    to study the functional properties of the early visual system with high precision. Outside of
+    the lab, Ryan can be found climbing, gaming, woodworking, and playing Ultimate Frisbee.
