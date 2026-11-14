@@ -1,11 +1,15 @@
 {{ define "main" }}
-<section class="hero">
-  <h1>Horwitz Lab</h1>
-  <p class="tagline">We study the neural mechanisms of visual perception and visually guided behavior in macaque monkeys, with a focus on how cone photoreceptor signals are transformed along the LGN–V1 pathway to support spatial and color vision.</p>
-  <div class="hero-links">
-    <a class="btn btn-primary" href="{{ "/research/" | relURL }}">Our Research</a>
-    <a class="btn btn-outline" href="{{ "/publications/" | relURL }}">Publications</a>
-    <a class="btn btn-outline" href="{{ "/members/" | relURL }}">Lab Members</a>
+<section class="hero" id="hero">
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <h1 class="hero-title">Horwitz Lab</h1>
+    <p class="hero-sub">Neural mechanisms of visual perception &amp; visually guided behavior</p>
+    <p class="hero-dept">Neurobiology &amp; Biophysics · University of Washington</p>
+    <div class="hero-links">
+      <a class="btn btn-primary" href="{{ "/research/" | relURL }}">Our Research</a>
+      <a class="btn btn-outline" href="{{ "/publications/" | relURL }}">Publications</a>
+      <a class="btn btn-outline" href="{{ "/members/" | relURL }}">Lab Members</a>
+    </div>
   </div>
 </section>
 
@@ -37,7 +41,13 @@
   <p>
     Department of <a href="https://nbio.uw.edu/">Neurobiology &amp; Biophysics</a>,
     University of Washington &mdash; and the
-    <a href="https://wanprc.uw.edu/">Washington National Primate Research Center (WaNPRC)</a>.
+    <a href="https://wanbrc.uw.edu/">Washington National Biomedical Research Center (WaNBRC)</a>.
   </p>
 </section>
+
+<script>
+  var heroes = ['/images/hero1.jpg', '/images/hero2.jpg', '/images/hero3.jpg'];
+  var pick = heroes[Math.floor(Math.random() * heroes.length)];
+  document.getElementById('hero').style.backgroundImage = 'url(' + pick + ')';
+</script>
 {{ end }}

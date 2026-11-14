@@ -14,7 +14,7 @@ params:
   addressURL: "http://uw.edu/maps/?hsb"
   github: "https://github.com/horwitzlab"
   departmentURL: "https://nbio.uw.edu/"
-  wanprcURL: "https://wanprc.uw.edu/"
+  wanprcURL: "https://wanbrc.uw.edu/"
 
 menu:
   main:
