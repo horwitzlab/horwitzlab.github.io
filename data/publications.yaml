@@ -1,25 +1,25 @@
 - year: '2026'
   papers:
-  - authors: Ressmeyer RA, Otero-Millan J, Horwitz GD, Yates JL, 2026
+  - authors: Ressmeyer RA, Otero-Millan J, Horwitz GD, and Yates JL
     title: 'OpenIrisDPI: An open-source digital dual Purkinje image eye tracker for
       visual neuroscience.'
     journal: Journal of Neuroscience Methods
     url: https://drive.google.com/file/d/1drO4NUM3eVHODbMWiILOLC-Ul-AApsf1/view?usp=drive_link
 - year: '2025'
   papers:
-  - authors: Hunker AC et al., 2025
+  - authors: Hunker AC et al.
     title: Enhancer AAV toolbox for accessing and perturbing striatal cell types and
       circuits.
     journal: Neuron
     url: https://drive.google.com/file/d/1imuetS-JEIC3dH0wXjuej37p4mR72S1C/view?usp=drive_link
 - year: '2024'
   papers:
-  - authors: Yazdan-Shamorad P, Gibson S, Lee JC, and Horwitz GD, 2024
+  - authors: Yazdan-Shamorad P, Gibson S, Lee JC, and Horwitz GD
     title: Preferential transduction of parvalbumin-expressing cortical neurons by
       AAV-mDLX5/6 vectors.
     journal: Frontiers in Neuroscience
     url: https://drive.google.com/file/d/1uHgu9JbMhLXwEGZr-3sLxf6WtCCCzU2w/view?usp=drive_link
-  - authors: Soetedjo R and Horwitz GD, 2024
+  - authors: Soetedjo R and Horwitz GD
     title: 'Closed-loop optogenetic perturbation of macaque oculomotor cerebellum:
       evidence for an internal saccade model.'
     journal: J. Neurosci
@@ -27,220 +27,217 @@
 - year: '2023'
   papers:
   - authors: Grieco SF, Johnston KG, Gao P, Garduño BM, Tang B, Yi E, Sun Y, Horwitz
-      GD, Yu Zhaoxia, Holmes TC, and Xu X, 2023
+      GD, Yu Z, Holmes TC, and Xu X
     title: 'Anatomical and molecular characterization of parvalbumin-cholecystokinin
       co-expressing inhibitory interneurons: implications for neuropsychiatric conditions.'
     journal: Molecular Psychiatry
     url: https://drive.google.com/file/d/1aJDFNRKgcMKi2DyrXU1wj3YTfBXMA7MI/view?usp=drive_link
-  - authors: Bun LM and Horwitz GD, 2023, Color and luminance processing in V1 complex
-      cellsand artificial neural networks. Color Research and Application.
-    title: ''
-    journal: ''
+  - authors: Bun LM and Horwitz GD
+    title: Color and luminance processing in V1 complex cells and artificial neural
+      networks.
+    journal: Color Research and Application
     url: null
 - year: '2022'
   papers:
-  - authors: Horwitz GD and Batista AP, 2022
+  - authors: Horwitz GD and Batista AP
     title: 'Cognitive neuroscience: Mental replay in monkeys.'
     journal: Current Biology
     url: https://drive.google.com/file/d/1yStl5fQiGFKd5hptM7GwFnBb64fQXn1B/view?usp=sharing
-  - authors: Horwitz GD and De A, 2022
+  - authors: Horwitz GD and De A
     title: Coding of chromatic spatial contrast by macaque V1 neurons
     journal: eLife
     url: https://drive.google.com/file/d/1YNA3nTe0-NG3NE_2gj8BPxhcVWnSude9/view?usp=sharing
 - year: '2021'
   papers:
-  - authors: Mich et al., 2021
+  - authors: Mich et al.
     title: Functional enhancer elements drive subclass-selective expression from mouse
       to primate neocortex
     journal: Cell Reports
     url: https://drive.google.com/file/d/1OvwROth8_jEW_eI2GJz3UL4NxMyZVg3G/view?usp=sharing
-  - authors: Horwitz GD and De A, 2021
+  - authors: Horwitz GD and De A
     title: Spatial receptive field structure of double-opponent cells in macaque V1.
     journal: J Neurophysiol
     url: https://drive.google.com/file/d/1Yi_sR_CABam20vbmSP2_IvKcon0B86MZ/view?usp=sharing
-  - authors: Horwitz GD, Orsborn AL, and Canfield RA, 2021
+  - authors: Horwitz GD, Orsborn AL, and Canfield RA
     title: Windows and periscopes into primate behavior.
-    journal: '&nbsp;Cell reports&nbsp;vol. 36'
+    journal: Cell Reports vol. 36
     url: https://drive.google.com/file/d/1FUdJWzWyGQx7pXCm8GVZJtpsHvW31mQO/view?usp=sharing
-  - authors: Kojima Y, Ting JT, Soetedjo R, Gibson SD, and Horwitz GD, 2021
+  - authors: Kojima Y, Ting JT, Soetedjo R, Gibson SD, and Horwitz GD
     title: Injections of AAV Vectors for Optogenetics in Anesthetized and Awake Behaving
       Non-Human Primate Brain.
     journal: J Vis Exp
     url: https://drive.google.com/file/d/1N1w1kgCAg-ElDauX_iNzNb-cOJdanf3P/view?usp=sharing
 - year: '2020'
   papers:
-  - authors: Horwitz GD, 2020
+  - authors: Horwitz GD
     title: Temporal information loss in the macaque early visual system
     journal: PLOS Biology
     url: https://drive.google.com/file/d/1WBp_MvITBfzTjMdJmYDhx4mWQ_Y_skOx/view?usp=sharing
-  - authors: Xu X, Holmes TC, Luo MH, Beier KT, Horwitz GD, Zhao F, Zeng W, Hui M,
-      Semler BL, Sandri-Goldin RM, 2020
+  - authors: Xu X, Holmes TC, Luo MH, Beier KT, Horwitz GD, Zhao F, Zeng W, Hui
+      M, Semler BL, and Sandri-Goldin RM
     title: Viral Vectors for Neural Circuit Mapping and Recent Advances in Trans-synaptic
       Anterograde Tracers
     journal: Neuron
     url: https://drive.google.com/file/d/1cY_UJGqnhvZ2Za2TXsnfFCzNj8lLDlwk/view?usp=sharing
-  - authors: Horwitz GD, 2020
+  - authors: Horwitz GD
     title: Signals Related to Color in the Early Visual Cortex.
     journal: Annu Rev Vis Sci
     url: https://drive.google.com/file/d/1jR2r6GngeqFBaTrOJNtCDOJ5ygRXVPUu/view?usp=sharing
-  - authors: De A, El-Shamayleh Y, and Horwitz GD, 2020
+  - authors: De A, El-Shamayleh Y, and Horwitz GD
     title: Fast and reversible neural inactivation in macaque cortex by optogenetic
       stimulation of GABAergic neurons.
     journal: PLOS Biology
     url: https://drive.google.com/file/d/1eQK9ZJrc44RUGOuONdYO1RUuk-zOgmsT/view
 - year: '2019'
   papers:
-  - authors: Horwitz, G. D., El-Shamayleh, Yasmine, 2019
+  - authors: Horwitz GD and El-Shamayleh Y
     title: 'Primate optogenetics: Progress and prognosis.'
     journal: Proceedings of the National Academy of Sciences
     url: https://drive.google.com/file/d/1izp2JAzkzfUv9Zvx4HaFnN_9E0A1SVJP/view?usp=sharing
 - year: '2018'
   papers:
-  - authors: Horwitz, G. D., Fetsch, Christopher, Odean, Naomi N., Jeurissen, Danique,
-      El-Shamayleh, Yasmine, Shadlen, M.N., 2018
+  - authors: Horwitz GD, Fetsch C, Odean NN, Jeurissen D, El-Shamayleh Y, and Shadlen MN
     title: Focal optogenetic suppression in macaque area MT biases direction discrimination
       and decision confidence, but only transiently
     journal: eLife
     url: https://drive.google.com/file/d/1efFzQqAm2vOufEnLMyQTt01EkYMJstfw/view?usp=sharing
-  - authors: Horwitz, G. D., Gelfand, E. C., 2018
+  - authors: Horwitz GD and Gelfand EC
     title: Model of parafoveal chromatic and luminance temporal contrast sensitivity
       of humans and monkeys
-    journal: '&nbsp;Journal of Vision'
+    journal: Journal of Vision
     url: https://drive.google.com/file/d/1RQtTRLzsxWjHV2oiXlokpUyLlGtG3Whi/view?usp=sharing
-  - authors: Horwitz, G. D., Charles A. S., Park M., Weller J. P., and Pillow J. P.
-      2018,&nbsp;
+  - authors: Horwitz GD, Charles AS, Park M, Weller JP, and Pillow JW
     title: 'Dethroning the Fano Factor: a flexible, model-based approach to partitioning
-      neural variability.&nbsp;'
+      neural variability.'
     journal: Neural Computation
     url: https://www.biorxiv.org/content/early/2017/07/19/165670
 - year: '2017'
   papers:
-  - authors: Horwitz &nbsp;G. D., Weller J. P., 2017,&nbsp;
+  - authors: Horwitz GD and Weller JP
     title: 'Measurements of neuronal color tuning: Procedures, pitfalls, and alternatives.'
-    journal: '&nbsp;Vision Research.&nbsp;'
+    journal: Vision Research
     url: http://faculty.washington.edu/ghorwitz/wordpress/wp-content/uploads/2018/01/Weller.pdf
-  - authors: Horwitz G. D., El-Shamayleh Y., Kojima Y., Soetedjo R., 2017,&nbsp;
+  - authors: Horwitz GD, El-Shamayleh Y, Kojima Y, and Soetedjo R
     title: Selective optogenetic control of Purkinje cells in monkey cerebellum.
-    journal: '&nbsp;Neuron'
+    journal: Neuron
     url: http://www.cell.com/neuron/fulltext/S0896-6273(17)30500-7
-  - authors: Horwitz G. D.,  Mendoza, S. D., El-Shamayleh Y., 2017,&nbsp;
+  - authors: Horwitz GD, Mendoza SD, and El-Shamayleh Y
     title: AAV-mediated delivery of optogenetic constructs to the macaque brain triggers
       humoral immune responses.
     journal: Journal of Neurophysiology
     url: http://faculty.washington.edu/ghorwitz/wordpress/wp-content/uploads/2018/01/MendozaEtAl.pdf
 - year: '2016'
   papers:
-  - authors: Horwitz G. D., El-Shamayleh&nbsp;Y., Ni A. M., 2016,&nbsp;
+  - authors: Horwitz GD, El-Shamayleh Y, and Ni AM
     title: Strategies for targeting primate neural circuits with viral vectors.
-    journal: '&nbsp;Journal of Neurophysiology'
+    journal: Journal of Neurophysiology
     url: http://faculty.washington.edu/ghorwitz/wordpress/wp-content/uploads/2018/01/2016-ElShamayleh-Ni-Horwitz.pdf
 - year: '2015'
   papers:
-  - authors: Horwitz G. D., Hass C. A., Anguerya J., Lindbloom-Brown Z., Rieke F.,
-      2015,&nbsp;
+  - authors: Horwitz GD, Hass CA, Anguerya J, Lindbloom-Brown Z, and Rieke F
     title: Chromatic detection from cone photoreceptors to V1 neurons to behavior
       in rhesus monkeys.
-    journal: '&nbsp;Journal of Vision'
+    journal: Journal of Vision
     url: http://faculty.washington.edu/ghorwitz/wordpress/wp-content/uploads/2018/01/HassAnguerya.pdf
-  - authors: Horwitz G. D., 2015,&nbsp;
+  - authors: Horwitz GD
     title: What studies of macaque monkeys have told us about human color vision.
-    journal: '&nbsp;Neuroscience'
+    journal: Neuroscience
     url: http://faculty.washington.edu/ghorwitz/wordpress/wp-content/uploads/2018/01/MonkeyModel.pdf
 - year: '2014'
   papers:
-  - authors: Horwitz G. D., Lindbloom-Brown Z., Tait L. J., 2014
-    title: Spectral sensitivity differences between rhesus monkeys and humans:implications
-      for neurophysiology.
-    journal: '&nbsp;J. Neurophysiol'
+  - authors: Horwitz GD, Lindbloom-Brown Z, and Tait LJ
+    title: 'Spectral sensitivity differences between rhesus monkeys and humans: implications
+      for neurophysiology.'
+    journal: J. Neurophysiol
     url: http://faculty.washington.edu/ghorwitz/wordpress/wp-content/uploads/2018/01/LBetal.pdf
-  - authors: Horwitz G. D., Ni A. M., Murray S. O., 2014,&nbsp;
+  - authors: Horwitz GD, Ni AM, and Murray SO
     title: Object-centered shifts of receptive field positions in monkey primary visual
       cortex.
-    journal: '&nbsp;Curr. Biol'
+    journal: Curr. Biol
     url: http://faculty.washington.edu/ghorwitz/wordpress/wp-content/uploads/2018/01/Nietal.pdf
-  - authors: Horwitz G. D., Park M., Weller J. P., and Pillow J. W., 2014,&nbsp;
+  - authors: Horwitz GD, Park M, Weller JP, and Pillow JW
     title: Bayesian active learning of neural firing rate maps with transformed Gaussian
       process priors.
-    journal: '&nbsp;Neural Computation'
+    journal: Neural Computation
     url: http://faculty.washington.edu/ghorwitz/wordpress/wp-content/uploads/2018/01/neco_a_00615.pdf
 - year: '2013'
   papers:
-  - authors: Horwitz G. D., Hass C. A., 2013,&nbsp;
+  - authors: Horwitz GD and Hass CA
     title: V1 mechanisms underlying chromatic contrast detection
-    journal: '&nbsp;J. Neurophysiology'
+    journal: J. Neurophysiology
     url: http://jn.physiology.org/content/early/2013/02/22/jn.00671.2012.full.pdf+html
 - year: '2012'
   papers:
-  - authors: Horwitz G. D., Jazayeri M., Lindbloom-Brown Z., 2012,&nbsp;
+  - authors: Horwitz GD, Jazayeri M, and Lindbloom-Brown Z
     title: Saccadic eye movements evoked by optogenetic activation of primate V1
-    journal: '&nbsp;Natural Neuroscience'
+    journal: Natural Neuroscience
     url: http://faculty.washington.edu/ghorwitz/wordpress/wp-content/uploads/2018/01/Jazayeri.pdf
-  - authors: Horwitz G. D. Hass, C. A., 2012,&nbsp;
+  - authors: Horwitz GD and Hass CA
     title: Nonlinear analysis of macaque V1 color tuning reveals cardinal directions
       for cortical color processing
     journal: Natural Neuroscience
     url: http://faculty.washington.edu/ghorwitz/wordpress/wp-content/uploads/2018/01/HorwitzHass.pdf
 - year: '2011'
   papers:
-  - authors: Horwitz G. D., Park M., Pillow J. W., 2011,&nbsp;
+  - authors: Horwitz GD, Park M, and Pillow JW
     title: Active learning of neural response functions with Gaussian processes.
-    journal: '&nbsp;Advances in Neural Information Processing Systems (NIPS) 24'
+    journal: Advances in Neural Information Processing Systems (NIPS) 24
     url: http://faculty.washington.edu/ghorwitz/wordpress/wp-content/uploads/2018/01/Park.pdf
-  - authors: Horwitz, G. D., Hass, C. A., 2011,&nbsp;
+  - authors: Horwitz GD and Hass CA
     title: Effects of microsaccades on contrast detection and V1 responses in macaques
-    journal: '&nbsp;J. Vision'
+    journal: J. Vision
     url: http://faculty.washington.edu/ghorwitz/wordpress/wp-content/uploads/2018/01/HassHorwitz.pdf
-- year: '2010'
+- year: '2010 and earlier'
   papers:
-  - authors: Horwitz, G. D., Conway, B. R., Chatterjee, S., Field, G. D., Johnson,
-      E. N., Koida, K., and Mancuso, K., 2010,&nbsp;
+  - authors: Horwitz GD, Conway BR, Chatterjee S, Field GD, Johnson EN, Koida K,
+      and Mancuso K
     title: 'Advances in color science: From retina to behavior.'
-    journal: '&nbsp;J. Neurosci'
+    journal: J. Neurosci
     url: http://faculty.washington.edu/ghorwitz/wordpress/wp-content/uploads/2018/01/SFN2010.pdf
-  - authors: Horwitz, G. D., Chichilnisky, E. J., and Albright, T. D., 2007,&nbsp;
+  - authors: Horwitz GD, Chichilnisky EJ, and Albright TD
     title: Cone inputs to simple and complex cells in V1 of awake macaque.
-    journal: '&nbsp;J. Neurophysiol'
+    journal: J. Neurophysiol
     url: http://faculty.washington.edu/ghorwitz/wordpress/wp-content/uploads/2018/01/SimpleComplex.pdf
-  - authors: Horwitz, G. D., Tan, E. M., Yamaguchi, Y., Gosgnach, S., Lein, E. S.,
-      Goulding, M., Albright, T. D., Callaway, E. M., 2006,&nbsp;
+  - authors: Horwitz GD, Tan EM, Yamaguchi Y, Gosgnach S, Lein ES, Goulding M,
+      Albright TD, and Callaway EM
     title: Selective and quickly reversible inactivation of mammalian neurons in vivo
       using the Drosophila allatostatin receptor.
-    journal: '&nbsp;Neuron'
+    journal: Neuron
     url: http://faculty.washington.edu/ghorwitz/wordpress/wp-content/uploads/2018/01/Tanetal.pdf
-  - authors: Horwitz, G. D. and Albright, T. D., 2005,&nbsp;
+  - authors: Horwitz GD and Albright TD
     title: Paucity of chromatic linear motion detectors in macaque V1.
-    journal: '&nbsp;J. Vision'
+    journal: J. Vision
     url: http://faculty.washington.edu/ghorwitz/wordpress/wp-content/uploads/2018/01/PaucityColorMotionV1.pdf
-  - authors: Horwitz, G. D., Chichilnisky, E. J., Albright, T. D., 2005,&nbsp;
+  - authors: Horwitz GD, Chichilnisky EJ, and Albright TD
     title: Blue-yellow signals are enhanced by spatiotemporal luminance contrast in
-      macaque
-    journal: '&nbsp;V1. J. Neurophysiol'
+      macaque V1.
+    journal: J. Neurophysiol
     url: http://faculty.washington.edu/ghorwitz/wordpress/wp-content/uploads/2018/01/BY_STC.pdf
-  - authors: Horwitz, G. D., Batista, A. P., Newsome, W. T., 2004,&nbsp;
+  - authors: Horwitz GD, Batista AP, and Newsome WT
     title: Direction-selective visual responses in macaque superior colliculus induced
       by behavioral training.
-    journal: '&nbsp;Neurosci. Lett'
+    journal: Neurosci. Lett
     url: http://faculty.washington.edu/ghorwitz/wordpress/wp-content/uploads/2018/01/DirSelBehTrain.pdf
-  - authors: Horwitz, G. D., Batista, A. P., Newsome, W. T., 2004&nbsp;
+  - authors: Horwitz GD, Batista AP, and Newsome WT
     title: Representation of an abstract perceptual decision in macaque superior colliculus.
-    journal: '&nbsp;J. Neurophysiol'
+    journal: J. Neurophysiol
     url: http://faculty.washington.edu/ghorwitz/wordpress/wp-content/uploads/2018/01/LSRA.pdf
-  - authors: Horwitz, G. D., Albright, T. D., 2003,&nbsp;
+  - authors: Horwitz GD and Albright TD
     title: Short latency fixational saccades induced by luminance increments.
-    journal: '&nbsp;J. Neurophysiol'
+    journal: J. Neurophysiol
     url: http://faculty.washington.edu/ghorwitz/wordpress/wp-content/uploads/2018/01/FixSac.pdf
-  - authors: Horwitz, G. D., Newsome, W. T., 2001,&nbsp;
+  - authors: Horwitz GD and Newsome WT
     title: 'Target selection for saccadic eye movements: Direction selective visual
       responses in the superior colliculus.'
-    journal: '&nbsp;J. Neurophysiol'
+    journal: J. Neurophysiol
     url: http://faculty.washington.edu/ghorwitz/wordpress/wp-content/uploads/2018/01/horwitz2001_1.pdf
-  - authors: Horwitz, G. D., Newsome, W. T., 2001,&nbsp;
+  - authors: Horwitz GD and Newsome WT
     title: 'Target selection for saccadic eye movements: Prelude activity in the superior
       colliculus during a direction discrimination task.'
-    journal: '&nbsp;J. Neurophysiol'
+    journal: J. Neurophysiol
     url: http://faculty.washington.edu/ghorwitz/wordpress/wp-content/uploads/2018/01/horwitz2001_2.pdf
-  - authors: Horwitz, G. D., Newsome, W. T., 1999,&nbsp;
+  - authors: Horwitz GD and Newsome WT
     title: Separate signals for target selection and movement specification in the
       superior colliculus.
-    journal: '&nbsp;Science'
+    journal: Science
     url: http://faculty.washington.edu/ghorwitz/wordpress/wp-content/uploads/2018/01/horwitz_1999.pdf
