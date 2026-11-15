@@ -17,7 +17,7 @@
       <div class="member-photo-placeholder">Photo coming soon</div>
       {{ end }}
       <div class="member-info">
-        <h2>{{ .name }}</h2>
+        {{ if .scholar_url }}<h2><a href="{{ .scholar_url }}" target="_blank" rel="noopener noreferrer">{{ .name }}</a></h2>{{ else }}<h2>{{ .name }}</h2>{{ end }}
         <p class="member-role">{{ .role }}</p>
         <p class="member-bio">{{ .bio }}</p>
         {{ if .links }}

@@ -1,5 +1,6 @@
 - name: Greg Horwitz
   role: Principal Investigator
+  scholar_url: "https://scholar.google.com/citations?user=-nn81AsAAAAJ&hl=en"
   photo: "https://depts.washington.edu/horwitzlab/wordpress/wp-content/uploads/2023/02/Greg-small-1024x1024.jpg"
   bio: >
     Greg was born in Eugene, Oregon, grew up in Concord, Massachusetts, and returned to the
@@ -16,18 +17,21 @@
 
 - name: J. Mike Hasse
   role: Research Scientist
+  scholar_url: "https://scholar.google.com/citations?user=K1c6CcgAAAAJ&hl=en"
   photo: /images/mike-hasse.jpg
   bio: >
     Mike is a Research Scientist in the Horwitz Lab. He completed his PhD in Farran Briggs's lab at the University of Rochester Medical Center, where he studied morphological heterogeneity among corticogeniculate neurons. He subsequently worked as a postdoctoral researcher in the Visual Neuroscience Lab at New York University with J. Anthony Movshon and Michael Hawken. His research focuses on how feedback projections from the visual cortex to the lateral geniculate nucleus shape the processing of visual information.
 
 - name: Samuele Virgili
   role: Postdoctoral Researcher (in collaboration with Rieke Lab)
+  scholar_url: "https://scholar.google.com/citations?user=s3pqyJEAAAAJ&hl=en"
   photo: /images/samuele-virgili.jpg
   bio: >
     Samuele is a Postdoctoral Researcher in the Horwitz Lab, working in collaboration with the Rieke Lab. He received his training at the Institut de la Vision at Sorbonne Universite (INSERM/CNRS) in Paris, where he worked in Olivier Marre's group. His research focuses on how the retina encodes visual information, with an emphasis on motion segmentation, the representation of natural scenes, and the application of Gaussian process models to understand neural responses. At UW, he brings this expertise in retinal computation to questions about how visual signals are transformed along the pathway from the eye to the cortex.
 
 - name: Luke Bun
   role: Graduate Student
+  scholar_url: "https://scholar.google.com/citations?user=lCGaOhcAAAAJ&hl=en"
   photo: "https://depts.washington.edu/horwitzlab/wordpress/wp-content/uploads/2023/02/Luke_small-1-1024x1024.jpg"
   bio: >
     Luke was born and raised in Seattle. Seeking an academic challenge, at the ripe age of 15,
@@ -40,6 +44,7 @@
 
 - name: Padideh Yazdan-Shahmorad
   role: Graduate Student
+  scholar_url: "https://scholar.google.com/citations?user=COe8Jw0AAAAJ&hl=en"
   photo: "https://depts.washington.edu/horwitzlab/wordpress/wp-content/uploads/2023/02/Padideh_small-1024x1024.jpg"
   bio: >
     Padideh was born and raised in Esfahan, Iran. She has a bachelor's in Physics from Isfahan
@@ -52,6 +57,7 @@
 
 - name: Ryan Ressmeyer
   role: Graduate Student
+  scholar_url: "https://scholar.google.com/citations?user=YIK_mgoAAAAJ&hl=en"
   photo: "https://depts.washington.edu/horwitzlab/wordpress/wp-content/uploads/2023/02/RyanR_small.jpg"
   bio: >
     A Seattle native, Ryan joined the Horwitz Lab after receiving his degree in Electrical
