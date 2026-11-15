@@ -188,16 +188,16 @@ a:hover { color: var(--link-hover); text-decoration: underline; }
 
 .topic-row {
   display: grid;
-  grid-template-columns: 420px 1fr;
-  gap: 3rem;
+  grid-template-columns: clamp(200px, 36%, 320px) 1fr;
+  gap: 2.5rem;
   align-items: center;
-  padding: 2.25rem 0;
+  padding: 2rem 0;
   border-bottom: 1px solid var(--border);
 }
 .topic-row:last-child { border-bottom: none; }
 
 .topic-row--alt {
-  grid-template-columns: 1fr 420px;
+  grid-template-columns: 1fr clamp(200px, 36%, 320px);
 }
 .topic-row--alt .row-img  { order: 2; }
 .topic-row--alt .row-text { order: 1; }
@@ -206,12 +206,13 @@ a:hover { color: var(--link-hover); text-decoration: underline; }
   border-radius: 10px;
   overflow: hidden;
   box-shadow: 0 3px 16px rgba(75,46,131,.13);
-  height: 280px;
+  height: clamp(160px, 20vw, 240px);
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: zoom-in;
-  flex-shrink: 0;
+  min-width: 0;
+  width: 100%;
 }
 .row-img img {
   width: 100%;
@@ -219,16 +220,18 @@ a:hover { color: var(--link-hover); text-decoration: underline; }
   object-fit: contain;
 }
 
+.row-text {
+  min-width: 0;
+}
 .row-text h3 {
-  font-size: 1.15rem;
+  font-size: 1.1rem;
   color: var(--uw-purple);
-  margin-bottom: 0.6rem;
+  margin-bottom: 0.5rem;
 }
 .row-text p {
-  font-size: 0.95rem;
+  font-size: 0.93rem;
   color: var(--text-muted);
   line-height: 1.65;
-  max-width: 56ch;
 }
 
 .row-cite {
@@ -274,7 +277,7 @@ a:hover { color: var(--link-hover); text-decoration: underline; }
 .lb-close:hover { opacity: 1; }
 
 /* ---- Responsive: stack rows on small screens ---- */
-@media (max-width: 800px) {
+@media (max-width: 700px) {
   .topic-row,
   .topic-row--alt {
     grid-template-columns: 1fr;
@@ -282,7 +285,7 @@ a:hover { color: var(--link-hover); text-decoration: underline; }
   }
   .topic-row--alt .row-img  { order: 0; }
   .topic-row--alt .row-text { order: 0; }
-  .row-img { height: 220px; }
+  .row-img { height: clamp(160px, 45vw, 220px); }
 }
 
 /* ---- Legacy card styles (kept for research page if used) ---- */
