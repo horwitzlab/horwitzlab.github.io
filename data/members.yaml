@@ -17,12 +17,14 @@
 - name: J. Mike Hasse
   role: Research Scientist
   photo: /images/mike-hasse.jpg
-  bio: ""
+  bio: >
+    Mike is a Research Scientist in the Horwitz Lab. He completed a postdoctoral fellowship in Farran Briggs's lab at the University of Rochester Medical Center, where he studied morphological heterogeneity among corticogeniculate neurons. He subsequently worked as a postdoctoral researcher in the Visual Neuroscience Lab at New York University with J. Anthony Movshon and Michael Hawken. His research focuses on how feedback projections from the visual cortex to the lateral geniculate nucleus shape the processing of visual information.
 
 - name: Samuele Virgili
   role: Postdoctoral Researcher (in collaboration with Rieke Lab)
   photo: /images/samuele-virgili.jpg
-  bio: ""
+  bio: >
+    Samuele is a Postdoctoral Researcher in the Horwitz Lab, working in collaboration with the Rieke Lab. He received his training at the Institut de la Vision at Sorbonne Universite (INSERM/CNRS) in Paris, where he worked in Olivier Marre's group. His research focuses on how the retina encodes visual information, with an emphasis on motion segmentation, the representation of natural scenes, and the application of Gaussian process models to understand neural responses. At UW, he brings this expertise in retinal computation to questions about how visual signals are transformed along the pathway from the eye to the cortex.
 
 - name: Luke Bun
   role: Graduate Student
@@ -60,4 +62,5 @@
 - name: Aiden Starr
   role: Undergraduate Researcher
   photo: /images/aiden-starr.jpg
-  bio: ""
+  bio: >
+    Aiden is an Undergraduate Researcher in the Horwitz Lab, mentored by Ryan Ressmeyer. He grew up in Auburn, Washington, and is pursuing degrees in Biochemistry and Visual Neuroscience at UW. His research uses white noise analysis methods to characterize neural responses in macaque lateral geniculate nucleus (LGN). Aiden presented this work at the 2025 Hendrickson Trainee Symposium and is a recipient of the Mary Gates Research Scholarship.
