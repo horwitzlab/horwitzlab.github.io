@@ -5,12 +5,12 @@
   </div>
 </div>
 <div class="page-content">
-  {{ .Content }}
+  <p class="gallery-more-intro">Fun outside of the lab.</p>
   {{ $gallery := site.Data.gallery_more }}
   {{ if $gallery.photos }}
   <div class="gallery-grid">
     {{ range $gallery.photos }}
-    <div class="gallery-item">
+    <div class="gallery-item" data-src="/images/gallery-more/{{ .file }}" data-title="{{ .caption }}">
       <img src="/images/gallery-more/{{ .file }}" alt="{{ .caption }}" loading="lazy">
       {{ if .caption }}<p class="gallery-caption">{{ .caption }}</p>{{ end }}
     </div>
@@ -18,4 +18,36 @@
   </div>
   {{ end }}
 </div>
+
+<div id="lb-overlay" class="lb-overlay" aria-hidden="true">
+  <button class="lb-close" id="lb-close">&times;</button>
+  <img id="lb-img" src="" alt="">
+</div>
+
+<script>
+(function() {
+  var overlay = document.getElementById('lb-overlay');
+  var lbImg   = document.getElementById('lb-img');
+  var lbClose = document.getElementById('lb-close');
+
+  document.querySelectorAll('.gallery-item').forEach(function(item) {
+    item.style.cursor = 'zoom-in';
+    item.addEventListener('click', function() {
+      lbImg.src = item.dataset.src;
+      lbImg.alt = item.dataset.title || '';
+      overlay.classList.add('lb-open');
+      overlay.setAttribute('aria-hidden', 'false');
+    });
+  });
+
+  function closeLb() {
+    overlay.classList.remove('lb-open');
+    overlay.setAttribute('aria-hidden', 'true');
+    lbImg.src = '';
+  }
+  lbClose.addEventListener('click', closeLb);
+  overlay.addEventListener('click', function(e) { if (e.target === overlay) closeLb(); });
+  document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeLb(); });
+})();
+</script>
 {{ end }}
