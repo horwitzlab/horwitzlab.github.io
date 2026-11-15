@@ -1,0 +1,21 @@
+{{ define "main" }}
+<div class="page-header">
+  <div class="page-header-inner">
+    <h1><a href="{{ "/gallery/" | relURL }}" class="gallery-back">← Gallery</a></h1>
+  </div>
+</div>
+<div class="page-content">
+  {{ .Content }}
+  {{ $gallery := site.Data.gallery_more }}
+  {{ if $gallery.photos }}
+  <div class="gallery-grid">
+    {{ range $gallery.photos }}
+    <div class="gallery-item">
+      <img src="/images/gallery-more/{{ .file }}" alt="{{ .caption }}" loading="lazy">
+      {{ if .caption }}<p class="gallery-caption">{{ .caption }}</p>{{ end }}
+    </div>
+    {{ end }}
+  </div>
+  {{ end }}
+</div>
+{{ end }}
