@@ -13,28 +13,64 @@
   </div>
 </section>
 
-<section class="home-section">
+<section class="home-section research-areas-section">
   <h2>Research Areas</h2>
   <p>We combine Neuropixels electrophysiology, behavior, viral vector–mediated gene delivery, and optogenetics to dissect the cellular and circuit mechanisms of vision.</p>
-  <div class="topics-grid">
-    <div class="topic-card">
-      <h3>Color &amp; Spatial Vision</h3>
-      <p>How cone signals are combined in the LGN–V1 pathway to encode chromatic and luminance contrast.</p>
+
+  <div class="topics-list">
+
+    <div class="topic-row">
+      <div class="row-img" style="background:#ffffff;" data-src="{{ "/img/research/color-spatial-vision.png" | relURL }}" title="Color &amp; Spatial Vision">
+        <img src="{{ "/img/research/color-spatial-vision.png" | relURL }}" alt="3D isoresponse surfaces comparing V1 neurons and AlexNet units">
+      </div>
+      <div class="row-text">
+        <h3>Color &amp; Spatial Vision</h3>
+        <p>How cone signals are combined in the LGN–V1 pathway to encode chromatic and luminance contrast. We compare response properties of V1 neurons and artificial neural network units to understand the computations underlying color and spatial processing.</p>
+        <span class="row-cite">Bun &amp; Horwitz, Color Res Appl 2023</span>
+      </div>
     </div>
-    <div class="topic-card">
-      <h3>Flicker Perception</h3>
-      <p>What limits the temporal resolution of vision and how early visual circuits process time-varying stimuli.</p>
+
+    <div class="topic-row topic-row--alt">
+      <div class="row-img" style="background:#ffffff;" data-src="{{ "/img/research/flicker-perception.png" | relURL }}" title="Flicker Perception">
+        <img src="{{ "/img/research/flicker-perception.png" | relURL }}" alt="Macaque and LGN graphical abstract for flicker perception study">
+      </div>
+      <div class="row-text">
+        <h3>Flicker Perception</h3>
+        <p>What limits the temporal resolution of vision and how early visual circuits process time-varying stimuli. We record from LGN neurons and use psychophysical methods to link neural responses to perceptual thresholds for detecting flicker.</p>
+        <span class="row-cite">Horwitz, iScience 2021</span>
+      </div>
     </div>
-    <div class="topic-card">
-      <h3>Eye Movements</h3>
-      <p>How visual signals guide saccadic eye movements and what the cerebellum contributes to their control.</p>
+
+    <div class="topic-row">
+      <div class="row-img" style="background:#000000;" data-src="{{ "/img/research/eye-movements.png" | relURL }}" title="Eye Movements">
+        <img src="{{ "/img/research/eye-movements.png" | relURL }}" alt="Eye position traces on black background with spike rasters">
+      </div>
+      <div class="row-text">
+        <h3>Eye Movements</h3>
+        <p>How visual signals guide saccadic eye movements and what the cerebellum contributes to their control. We record neural activity during visually guided saccades to understand how the brain transforms visual signals into motor commands.</p>
+        <span class="row-cite">Ressmeyer et al., unpublished</span>
+      </div>
     </div>
-    <div class="topic-card">
-      <h3>Viral Vectors &amp; Optogenetics</h3>
-      <p>Developing and validating AAV vectors targeting specific cell types for causal circuit interrogation.</p>
+
+    <div class="topic-row topic-row--alt">
+      <div class="row-img" style="background:#000000;" data-src="{{ "/img/research/viral-vectors-optogenetics.png" | relURL }}" title="Viral Vectors &amp; Optogenetics">
+        <img src="{{ "/img/research/viral-vectors-optogenetics.png" | relURL }}" alt="Confocal image showing labeled neurons with red dendrites and green/blue cell bodies">
+      </div>
+      <div class="row-text">
+        <h3>Viral Vectors &amp; Optogenetics</h3>
+        <p>Developing and validating AAV vectors targeting specific cell types for causal circuit interrogation. We use cell-type-specific promoters and intersectional strategies to achieve precise, reversible control of defined neuronal populations in the primate visual system.</p>
+        <span class="row-cite">De et al., eLife 2020</span>
+      </div>
     </div>
+
   </div>
 </section>
+
+<!-- Lightbox overlay -->
+<div id="lb-overlay" class="lb-overlay" aria-hidden="true">
+  <button class="lb-close" id="lb-close" aria-label="Close">&times;</button>
+  <img id="lb-img" src="" alt="">
+</div>
 
 <section class="home-section">
   <h2>Affiliations</h2>
@@ -49,5 +85,42 @@
   var heroes = ['/images/hero1.jpg', '/images/hero2.jpg', '/images/hero3.jpg'];
   var pick = heroes[Math.floor(Math.random() * heroes.length)];
   document.getElementById('hero').style.backgroundImage = 'url(' + pick + ')';
+
+  // Lightbox
+  (function() {
+    var overlay = document.getElementById('lb-overlay');
+    var lbImg   = document.getElementById('lb-img');
+    var lbClose = document.getElementById('lb-close');
+
+    function openLb(src, alt) {
+      lbImg.src = src;
+      lbImg.alt = alt || '';
+      overlay.classList.add('lb-open');
+      overlay.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeLb() {
+      overlay.classList.remove('lb-open');
+      overlay.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+      lbImg.src = '';
+    }
+
+    document.querySelectorAll('.row-img').forEach(function(el) {
+      el.addEventListener('click', function() {
+        var src = el.getAttribute('data-src');
+        var alt = el.querySelector('img') ? el.querySelector('img').getAttribute('alt') : '';
+        openLb(src, alt);
+      });
+    });
+
+    lbClose.addEventListener('click', closeLb);
+    overlay.addEventListener('click', function(e) {
+      if (e.target === overlay) closeLb();
+    });
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closeLb();
+    });
+  })();
 </script>
 {{ end }}
