@@ -554,4 +554,4 @@ a:hover { color: var(--link-hover); text-decoration: underline; }
 .gallery-back:hover { text-decoration: underline; }
 
 /* ---- Gallery more intro text ---- */
-.gallery-more-intro { font-family: Georgia, "Times New Roman", serif; font-style: italic; font-size: 1.15rem; color: #444; margin-bottom: 1.75rem; letter-spacing: 0.01em; }
+.gallery-more-intro { font-family: "Pacifico", cursive; font-size: 1.3rem; color: var(--uw-purple); margin-bottom: 1.75rem; font-weight: 400; }
