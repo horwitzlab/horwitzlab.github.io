@@ -11,7 +11,7 @@ params:
   email: "Horwitzlab@gmail.com"
   phone: "206-616-0731"
   address: "HSB I714, I728, G230"
-  addressURL: "http://uw.edu/maps/?hsb"
+  addressURL: "https://www.washington.edu/maps/#!/hsi"
   github: "https://github.com/horwitzlab"
   departmentURL: "https://nbio.uw.edu/"
   wanprcURL: "https://wanbrc.uw.edu/"
