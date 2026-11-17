@@ -5,13 +5,20 @@
   </div>
 </div>
 <div class="page-content">
-  {{ range .Site.Data.links }}
-  <h2 style="color:var(--uw-purple); font-size:1.1rem; margin:1.5rem 0 0.5rem;">{{ .category }}</h2>
-  <ul class="links-list">
-    {{ range .items }}
-    <li><a href="{{ .url }}" target="_blank" rel="noopener">{{ .label }}</a></li>
+  <div class="links-sections">
+    {{ range .Site.Data.links }}
+    <div class="links-section">
+      <p class="links-category">{{ .category }}</p>
+      <div class="links-rows">
+        {{ range .items }}
+        <a class="links-row" href="{{ .url }}" target="_blank" rel="noopener">
+          {{ if .icon }}<i class="ti {{ .icon }}" aria-hidden="true"></i>{{ end }}
+          {{ .label }}
+        </a>
+        {{ end }}
+      </div>
+    </div>
     {{ end }}
-  </ul>
-  {{ end }}
+  </div>
 </div>
 {{ end }}

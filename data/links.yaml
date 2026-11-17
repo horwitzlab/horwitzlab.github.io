@@ -2,12 +2,16 @@
   items:
     - label: Keck Microscopy Center
       url: https://depts.washington.edu/keck/
+      icon: ti-microscope
     - label: NBIO Intranet
       url: https://uwnetid.sharepoint.com/sites/nbio
+      icon: ti-building
 
 - category: Department & Center
   items:
     - label: UW Neurobiology & Biophysics
       url: https://nbio.uw.edu/
+      icon: ti-flask
     - label: Washington National Biomedical Research Center
       url: https://wanbrc.uw.edu/
+      icon: ti-dna
