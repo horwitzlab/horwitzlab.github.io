@@ -9,6 +9,9 @@
     - label: WaNBRC (internal)
       url: https://uwnetid.sharepoint.com/sites/wanprc-intranet
       icon: ti-building
+    - label: ACL
+      url: http://portalweb.wanprc.org/acl/Mobile
+      icon: ti-droplet
 
 - category: Department & Center
   items:
