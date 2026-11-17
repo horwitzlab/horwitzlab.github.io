@@ -1,23 +1,23 @@
-- category: UW Core Facilities
+- category: Department
   items:
+    - label: UW Neurobiology & Biophysics
+      url: https://nbio.uw.edu/
+      icon: ti-flask
     - label: Keck Microscopy Center
       url: https://depts.washington.edu/keck/
       icon: ti-microscope
     - label: NBIO Intranet
       url: https://uwnetid.sharepoint.com/sites/nbio
       icon: ti-building
+
+- category: Center
+  items:
+    - label: Washington National Biomedical Research Center
+      url: https://wanbrc.uw.edu/
+      icon: ti-dna
     - label: WaNBRC (internal)
       url: https://uwnetid.sharepoint.com/sites/wanprc-intranet
       icon: ti-building
     - label: ACL
       url: http://portalweb.wanprc.org/acl/Mobile
       icon: ti-droplet
-
-- category: Department & Center
-  items:
-    - label: UW Neurobiology & Biophysics
-      url: https://nbio.uw.edu/
-      icon: ti-flask
-    - label: Washington National Biomedical Research Center
-      url: https://wanbrc.uw.edu/
-      icon: ti-dna
