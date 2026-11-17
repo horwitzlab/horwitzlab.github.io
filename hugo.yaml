@@ -24,15 +24,18 @@ menu:
     - name: Members
       url: /members/
       weight: 2
+    - name: Alumni
+      url: /alumni/
+      weight: 3
     - name: Publications
       url: /publications/
-      weight: 3
+      weight: 4
     - name: Gallery
       url: /gallery/
-      weight: 4
+      weight: 5
     - name: Links
       url: /links/
-      weight: 5
+      weight: 6
 
 markup:
   goldmark:

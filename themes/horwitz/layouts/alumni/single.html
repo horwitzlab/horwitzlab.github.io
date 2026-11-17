@@ -1,0 +1,20 @@
+{{ define "main" }}
+<div class="page-header">
+  <div class="page-header-inner">
+    <h1>Alumni</h1>
+  </div>
+</div>
+<div class="page-content">
+  <div class="alumni-list">
+    {{ range .Site.Data.alumni }}
+    <div class="alumni-card">
+      <div class="alumni-info">
+        <h2>{{ .name }}</h2>
+        <p class="alumni-role">{{ .role }}</p>
+        {{ if .current }}<p class="alumni-current">{{ .current }}</p>{{ end }}
+      </div>
+    </div>
+    {{ end }}
+  </div>
+</div>
+{{ end }}
