@@ -1,4 +1,4 @@
 ---
 title: Alumni
-layout: single
+type: alumni
 ---

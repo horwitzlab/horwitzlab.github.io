@@ -588,3 +588,13 @@ a:hover { color: var(--link-hover); text-decoration: underline; }
   font-weight: 500;
 }
 .members-alumni-footer a:hover { text-decoration: underline; }
+
+/* ── Alumni Neurotree footer link ────────────────────────────── */
+.alumni-neurotree {
+  margin-top: 2.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border);
+  font-size: .95rem;
+}
+.alumni-neurotree a { color: var(--uw-purple); font-weight: 500; }
+.alumni-neurotree a:hover { text-decoration: underline; }
