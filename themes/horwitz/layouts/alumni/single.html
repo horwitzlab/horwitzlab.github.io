@@ -8,11 +8,6 @@
   <div class="alumni-list">
     {{ range .Site.Data.alumni }}
     <div class="alumni-card">
-      {{ if .photo }}
-      <img class="alumni-photo" src="{{ .photo }}" alt="{{ .name }}" loading="lazy">
-      {{ else }}
-      <div class="alumni-photo-placeholder">Photo<br>coming soon</div>
-      {{ end }}
       <div class="alumni-info">
         <h2>{{ .name }}</h2>
         <p class="alumni-role">{{ .role }}</p>
