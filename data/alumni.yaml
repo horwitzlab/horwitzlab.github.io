@@ -2,29 +2,28 @@
   role: Postdoctoral Researcher
   current: Assistant Professor, Department of Neuroscience, Columbia University
 
+- name: Amy Ni
+  role: Postdoctoral Researcher
+  current: Postdoctoral Researcher, University of Pittsburgh (Marlene Cohen Lab)
+
 - name: Charlie Hass
   role: PhD Student
+  current: Data Scientist, Core Compete
 
 - name: Abhishek De
   role: PhD Student
+  current: Senior Machine Learning Engineer, Affirm
 
 - name: J. Patrick Weller
   role: PhD Student
-
-- name: Jacqueline Lindbloom-Brown
-  role: PhD Student
-
-- name: Shane Gibson
-  role: PhD Student
-
-- name: Amy Ni
-  role: Postdoctoral Researcher
-
-- name: Skyler Mendoza
-  role: Undergraduate Researcher
+  current: Senior Data Scientist, PayPal
 
 - name: Ryan Canfield
   role: PhD Student
+  current: Postdoctoral Researcher, University of Washington (Orsborn & Golub Labs)
+
+- name: Skyler Mendoza
+  role: Undergraduate Researcher
 
 - name: Joanne Lee
   role: Undergraduate Researcher
