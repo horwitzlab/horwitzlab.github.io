@@ -6,6 +6,9 @@
     - label: NBIO Intranet
       url: https://uwnetid.sharepoint.com/sites/nbio
       icon: ti-building
+    - label: WaNBRC (internal)
+      url: https://uwnetid.sharepoint.com/sites/wanprc-intranet
+      icon: ti-building
 
 - category: Department & Center
   items:
