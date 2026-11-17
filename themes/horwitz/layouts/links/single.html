@@ -10,12 +10,12 @@
     <div class="links-section">
       <p class="links-category">{{ .category }}</p>
       <div class="links-rows">
-        {{ range .items }}
+        {{ range .items }}{{ if not .hidden }}
         <a class="links-row" href="{{ .url }}" target="_blank" rel="noopener">
           {{ if .icon }}<i class="ti {{ .icon }}" aria-hidden="true"></i>{{ end }}
           {{ .label }}
         </a>
-        {{ end }}
+        {{ end }}{{ end }}
       </div>
     </div>
     {{ end }}

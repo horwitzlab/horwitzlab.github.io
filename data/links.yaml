@@ -21,3 +21,4 @@
     - label: ACL
       url: http://portalweb.wanprc.org/acl/Mobile
       icon: ti-droplet
+      hidden: true
