@@ -3,6 +3,7 @@
 <title>{{ if .IsHome }}{{ .Site.Title }} — {{ .Site.Params.description }}{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}</title>
 <meta name="description" content="{{ if .IsHome }}{{ .Site.Params.description }}{{ else }}{{ .Title }} — {{ .Site.Title }}{{ end }}">
 <link rel="stylesheet" href="{{ "css/main.css" | relURL }}">
+<link rel="icon" type="image/gif" href="{{ "favicon.gif" | relURL }}">
 <link rel="icon" type="image/svg+xml" href="{{ "favicon.svg" | relURL }}">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
