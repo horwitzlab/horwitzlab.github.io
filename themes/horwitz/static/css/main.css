@@ -623,3 +623,51 @@ a:hover { color: var(--link-hover); text-decoration: underline; }
 }
 .alumni-neurotree a { color: var(--uw-purple); font-weight: 500; }
 .alumni-neurotree a:hover { text-decoration: underline; }
+
+/* ── Research page ───────────────────────────────────────────── */
+.page-intro {
+  font-size: 1.05rem;
+  color: var(--text);
+  line-height: 1.7;
+  margin-bottom: 2.5rem;
+  max-width: 820px;
+}
+
+.demo-section {
+  margin-bottom: 3rem;
+}
+.demo-section h2 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--uw-purple);
+  margin-bottom: 0.75rem;
+}
+.demo-section > p {
+  font-size: 0.97rem;
+  color: var(--text-muted);
+  line-height: 1.65;
+  margin-bottom: 1.25rem;
+  max-width: 820px;
+}
+
+.animation-frame {
+  background: #09111f;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 0.6rem;
+  line-height: 0;
+}
+.animation-frame iframe {
+  width: 800px;
+  height: 660px;
+  max-width: 100%;
+  border: 0;
+  display: block;
+}
+
+.demo-caption {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  font-style: italic;
+  margin-top: 0 !important;
+}

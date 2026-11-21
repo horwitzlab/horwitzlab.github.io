@@ -4,12 +4,20 @@
     <h1>Research</h1>
   </div>
 </div>
-<div class="wip-banner">
-  <span class="wip-icon">🚧</span>
-  <span class="wip-text">This page is under construction — check back soon.</span>
-  <span class="wip-icon">🚧</span>
-</div>
 <div class="page-content">
+  <p class="page-intro">We study the neural mechanisms of visual perception and visually guided behavior in macaque monkeys, focusing on how signals from cone photoreceptors are combined along the LGN–V1 pathway to support spatial and color vision, what limits the perception of flicker, and how visual signals guide eye movements. We combine Neuropixels electrophysiology, behavior, and viral vector–mediated optogenetics.</p>
+
+  <section class="demo-section">
+    <h2>Data in action: FEF optogenetic stimulation</h2>
+    <p>The animation below shows a memory-guided saccade task (Loki, 2025-01-31). A target briefly appears and is extinguished; the animal must hold it in memory and saccade to it after the fixation point turns off. On laser trials, the frontal eye field (FEF) is stimulated optogenetically during the target-on epoch. Spike trains from four Neuropixels units at different cortical depths show a marked increase in firing during the stimulation window (highlighted in orange) on laser trials compared to the no-laser control.</p>
+    <div class="animation-frame">
+      <iframe src="/demos/fef_animation.html"
+              title="FEF optogenetic stimulation — memory-guided saccade animation"
+              scrolling="no" frameborder="0"></iframe>
+    </div>
+    <p class="demo-caption">Click the canvas or press Play to animate. Each trial runs in real time (2.8 s), followed by the laser trial.</p>
+  </section>
+
   {{ .Content }}
 </div>
 {{ end }}
