@@ -1,305 +1,463 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<title>LGN Natural Foraging — Horwitz Lab</title>
+<meta charset="UTF-8">
+<title>LGN Natural Foraging</title>
 <style>
-  *{box-sizing:border-box;margin:0;padding:0}
-  html,body{
-    background:#09111f;
-    display:flex;flex-direction:column;align-items:center;
-    font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
-    color:#cdd;min-height:100%;
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: #111;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px 0 8px;
+    font-family: system-ui, sans-serif;
+    color: #ccc;
+    user-select: none;
   }
-  #wrap{width:700px;max-width:100%;padding:14px 0 10px}
-  canvas{display:block;background:#000;border-radius:4px;width:100%;height:auto}
-  #bar{
-    display:flex;align-items:center;gap:10px;
-    padding:7px 2px 4px;
-    font-size:12px;color:#8a9baa;
+  canvas {
+    display: block;
+    cursor: pointer;
+    border: 1px solid #333;
+    background: #000;
   }
-  #playbtn{
-    background:#1e3a52;border:1px solid #2e5a7a;color:#9fcfe8;
-    padding:4px 14px;border-radius:4px;cursor:pointer;font-size:13px;
-    min-width:72px;
+  #controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 7px;
+    width: 800px;
+    flex-wrap: wrap;
   }
-  #playbtn:hover{background:#2a4f6e}
-  #scrub{flex:1;cursor:pointer;accent-color:#3d9fd8;min-width:60px}
-  #timestr{min-width:72px;text-align:right;white-space:nowrap}
-  #status{
-    font-size:11px;color:#4a6070;padding:0 2px 8px;
-    font-style:italic;
+  #playBtn {
+    background: #2a6;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 5px 14px;
+    font-size: 13px;
+    cursor: pointer;
+    flex-shrink: 0;
+  }
+  #playBtn:hover { background: #3b7; }
+  #timeline {
+    flex: 1;
+    min-width: 100px;
+    accent-color: #2a6;
+    cursor: pointer;
+  }
+  #timeLabel { font-size: 12px; color: #aaa; flex-shrink: 0; min-width: 60px; }
+  label { font-size: 12px; color: #888; flex-shrink: 0; }
+  select {
+    background: #222; color: #ccc;
+    border: 1px solid #444; border-radius: 3px;
+    padding: 3px 6px; font-size: 12px; cursor: pointer;
+  }
+  #status {
+    font-size: 11px;
+    color: #666;
+    margin-top: 4px;
+    width: 800px;
+    text-align: left;
+    padding-left: 2px;
+    min-height: 15px;
   }
 </style>
 </head>
 <body>
-<div id="wrap">
-  <canvas id="cv" width="700" height="525"></canvas>
-  <div id="bar">
-    <button id="playbtn">&#9654; Play</button>
-    <input  id="scrub" type="range" min="0" max="1000" value="0" step="1">
-    <span   id="timestr">0.0 / 25.0 s</span>
-  </div>
-  <div id="status">Loading&hellip;</div>
+<canvas id="canvas" width="800" height="600"></canvas>
+<div id="controls">
+  <button id="playBtn">&#9654; Play</button>
+  <input type="range" id="timeline" min="0" max="99" value="0" step="1">
+  <span id="timeLabel">0.00 s</span>
+  <label for="speed">Speed</label>
+  <select id="speed">
+    <option value="0.25">0.25&times;</option>
+    <option value="0.5">0.5&times;</option>
+    <option value="1" selected>1&times;</option>
+    <option value="2">2&times;</option>
+  </select>
 </div>
+<div id="status">Loading&hellip;</div>
 
 <script>
-/*
- * LGN Natural Foraging Animation -- Horwitz Lab
- * ==============================================
- * Gaze-compensated retinal view of a natural image with LGN receptive-field
- * circles coloured by instantaneous firing rate.
- *
- * HOW TO USE REAL DATA
- * --------------------
- * 1. Run extract_lgn_animation_data.py  ->  lgn_animation_data.json
- * 2. cp lgn_animation_data.json  static/demos/lgn_animation_data.json
- * 3. For the real stimulus image:
- *    a) If run with --image the data URL is embedded in the JSON already.
- *    b) Otherwise copy the image to static/demos/lgn_scene.jpg and add
- *         "image_url":"lgn_scene.jpg"   to lgn_animation_data.json.
- *
- * COORDINATE CONVENTIONS
- * -----------------------
- * Visual space: (0,0) = screen centre, x right, y up  (degrees)
- * Canvas pixels: (0,0) = top-left, x right, y down
- * Mapping: px = W/2 + vx*S,  py = H/2 - vy*S   (S = pixels/degree)
- *
- * Gaze compensation:
- *   drawX = -gx * S   (image shifts left when eye moves right)
- *   drawY =  gy * S   (image shifts down when eye moves up)
- * RF circles stay at FIXED screen positions regardless of gaze.
- */
-'use strict';
-const CW=700,CH=525,DEFAULT_IMG_W=40,DEFAULT_IMG_H=30;
-const cv=document.getElementById('cv');
-const ctx=cv.getContext('2d');
-const playBtn=document.getElementById('playbtn');
-const scrub=document.getElementById('scrub');
-const timeStr=document.getElementById('timestr');
-const statusEl=document.getElementById('status');
-let playing=false,elapsed=0,startWall=0,rafId=null;
-let DATA=null,IMG=null,S=CW/DEFAULT_IMG_W;
+// Canvas & FOV constants
+const CW = 800, CH = 600;
+var PPD = 20;
+var FOV_X_MIN = -15, FOV_X_MAX = 25;
+var FOV_Y_MIN = -10, FOV_Y_MAX = 20;
+var X_BASE, Y_BASE;
 
-function makePRNG(seed){
-  let s=seed>>>0;
-  return function(){
-    s=(s+0x6D2B79F5)|0;
-    let t=Math.imul(s^(s>>>15),1|s);
-    t=(t+Math.imul(t^(t>>>7),61|t))^t;
-    return((t^(t>>>14))>>>0)/4294967296;
+function computeBaseOffsets() {
+  // canvas center shows the gaze position (retinal-coordinate display)
+  // draw_x = X_BASE - gx * PPD   draw_y = Y_BASE + gy * PPD
+  X_BASE = CW/2 + FOV_X_MIN * PPD;   // 400 + (-15)*20 = 100
+  Y_BASE = CH/2 - FOV_Y_MAX * PPD;   // 300 -  20 *20 = -100
+}
+
+// Animation state
+var nFrames = 0, frameDt = 1/20;
+var gazeX, gazeY;
+var rfCx, rfCy, rfR;
+var firingRates;
+var globalMaxFR = 1;
+var bgImage = null;
+var nUnits = 0;
+var currentFrame = 0;
+var playing = false;
+var lastTimestamp = null;
+var speed = 1.0;
+var demoMode = true;
+
+var canvas  = document.getElementById('canvas');
+var ctx     = canvas.getContext('2d');
+var playBtn = document.getElementById('playBtn');
+var tl      = document.getElementById('timeline');
+var timeLbl = document.getElementById('timeLabel');
+var statusEl= document.getElementById('status');
+
+// Colour scale: black -> cyan -> white
+function frColor(norm) {
+  if (norm <= 0) return 'rgb(0,0,0)';
+  if (norm < 0.5) {
+    var t = norm * 2;
+    return 'rgb(0,'+Math.round(155*t)+','+Math.round(185*t)+')';
+  }
+  var t = (norm - 0.5) * 2;
+  return 'rgb('+Math.round(255*t)+','+Math.round(155+100*t)+','+Math.round(185+70*t)+')';
+}
+
+// Draw one frame
+function drawFrame(f) {
+  f = Math.max(0, Math.min(nFrames - 1, f));
+  ctx.clearRect(0, 0, CW, CH);
+
+  // 1. Background image with gaze compensation (fixation stays at canvas center)
+  var gx = gazeX[f], gy = gazeY[f];
+  var dx = X_BASE - gx * PPD;
+  var dy = Y_BASE + gy * PPD;
+  if (bgImage) {
+    ctx.drawImage(bgImage, dx, dy, 800, 600);
+  } else {
+    ctx.fillStyle = '#1a2a1a';
+    ctx.fillRect(0, 0, CW, CH);
+  }
+
+  // 2. RF circles at fixed screen positions (no gaze compensation)
+  for (var u = 0; u < nUnits; u++) {
+    var norm = firingRates[u * nFrames + f] / globalMaxFR;
+    var cx = rfCx[u], cy = rfCy[u], r = rfR[u];
+    ctx.beginPath();
+    ctx.arc(cx, cy, r, 0, Math.PI*2);
+    ctx.fillStyle = frColor(norm);
+    ctx.fill();
+    ctx.strokeStyle = 'rgba(255,255,255,'+(0.15 + 0.4 * norm).toFixed(2)+')';
+    ctx.lineWidth = 1;
+    ctx.stroke();
+  }
+
+  // 3. Crosshair at canvas center = current gaze position
+  ctx.strokeStyle = 'rgba(255,255,255,0.75)';
+  ctx.lineWidth = 1;
+  var hs = 10;
+  ctx.beginPath();
+  ctx.moveTo(CW/2 - hs, CH/2); ctx.lineTo(CW/2 + hs, CH/2);
+  ctx.moveTo(CW/2, CH/2 - hs); ctx.lineTo(CW/2, CH/2 + hs);
+  ctx.stroke();
+}
+
+// Animation loop
+function step(ts) {
+  if (!playing) return;
+  if (lastTimestamp === null) lastTimestamp = ts;
+  var elapsed = (ts - lastTimestamp) / 1000;
+  lastTimestamp = ts;
+
+  currentFrame += elapsed * speed / frameDt;
+  if (currentFrame >= nFrames) {
+    currentFrame = nFrames - 1;
+    playing = false;
+    playBtn.textContent = '▶ Play';
+    lastTimestamp = null;
+  }
+
+  var f = Math.floor(currentFrame);
+  drawFrame(f);
+  tl.value = f;
+  timeLbl.textContent = (f * frameDt).toFixed(2) + ' s';
+
+  if (playing) requestAnimationFrame(step);
+}
+
+function togglePlay() {
+  playing = !playing;
+  playBtn.textContent = playing ? '⏸ Pause' : '▶ Play';
+  if (playing) {
+    if (Math.floor(currentFrame) >= nFrames - 1) currentFrame = 0;
+    lastTimestamp = null;
+    requestAnimationFrame(step);
+  }
+}
+
+canvas.addEventListener('click', togglePlay);
+playBtn.addEventListener('click', togglePlay);
+tl.addEventListener('input', function() {
+  currentFrame = parseInt(tl.value);
+  drawFrame(currentFrame);
+  timeLbl.textContent = (currentFrame * frameDt).toFixed(2) + ' s';
+});
+document.getElementById('speed').addEventListener('change', function(e) {
+  speed = parseFloat(e.target.value);
+});
+
+// Seeded PRNG (Mulberry32)
+function mulberry32(a) {
+  return function() {
+    a |= 0; a = a + 0x6D2B79F5 | 0;
+    var t = Math.imul(a ^ a >>> 15, 1 | a);
+    t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t;
+    return ((t ^ t >>> 14) >>> 0) / 4294967296;
   };
 }
 
-function gaussSmooth(arr,sigma){
-  const kw=Math.ceil(3*sigma)*2+1,c=(kw-1)>>1;
-  const k=new Float32Array(kw);let ks=0;
-  for(let i=0;i<kw;i++){k[i]=Math.exp(-0.5*((i-c)/sigma)**2);ks+=k[i];}
-  for(let i=0;i<kw;i++)k[i]/=ks;
-  const tmp=new Float32Array(arr.length),n=arr.length;
-  for(let i=0;i<n;i++){
-    let v=0;
-    for(let j=0;j<kw;j++){const idx=Math.max(0,Math.min(n-1,i-c+j));v+=k[j]*arr[idx];}
-    tmp[i]=v;
+// Gaussian smooth
+function gaussSmooth(arr, sigma) {
+  var n = arr.length;
+  var hw = Math.ceil(3 * sigma);
+  var kernel = [], ksum = 0;
+  for (var i = -hw; i <= hw; i++) {
+    var v = Math.exp(-0.5 * Math.pow(i/sigma, 2));
+    kernel.push(v); ksum += v;
   }
-  arr.set(tmp);
+  for (var i = 0; i < kernel.length; i++) kernel[i] /= ksum;
+  var out = new Float32Array(n);
+  for (var i = 0; i < n; i++) {
+    var s = 0;
+    for (var j = 0; j < kernel.length; j++) {
+      var idx = Math.min(n-1, Math.max(0, i - hw + j));
+      s += arr[idx] * kernel[j];
+    }
+    out[i] = s;
+  }
+  return out;
 }
 
-function rateColor(norm){
-  let r,g,b;
-  if(norm<0.5){const t=norm*2;r=0;g=Math.round(155*t);b=Math.round(185*t);}
-  else{const t=(norm-0.5)*2;r=Math.round(255*t);g=Math.round(155+100*t);b=Math.round(185+70*t);}
-  return[r,g,b];
-}
+// Procedural placeholder image
+function makeDemoImage() {
+  var oc = new OffscreenCanvas(800, 600);
+  var oc2 = oc.getContext('2d');
+  var rng = mulberry32(42);
 
-function makePlaceholderImage(){
-  const W=1280,H=960,oc=document.createElement('canvas');
-  oc.width=W;oc.height=H;const c=oc.getContext('2d');
-  const rng=makePRNG(7);
-  const sky=c.createLinearGradient(0,0,0,H*0.52);
-  sky.addColorStop(0,'#3870c8');sky.addColorStop(0.5,'#6aaae0');sky.addColorStop(1,'#a8d4f0');
-  c.fillStyle=sky;c.fillRect(0,0,W,H);
-  const grd=c.createLinearGradient(0,H*0.48,0,H);
-  grd.addColorStop(0,'#4e8233');grd.addColorStop(0.4,'#3a6624');grd.addColorStop(1,'#5c4218');
-  c.fillStyle=grd;c.fillRect(0,H*0.48,W,H*0.52);
-  c.fillStyle='#2d5519';c.beginPath();c.moveTo(0,H*0.6);
-  for(let x=0;x<=W;x+=18){
-    const y=H*0.52+Math.sin(x*0.011)*H*0.038+Math.sin(x*0.031)*H*0.018+Math.sin(x*0.073)*H*0.010;
-    c.lineTo(x,y);
+  var sky = oc2.createLinearGradient(0,0,0,350);
+  sky.addColorStop(0, '#3a6fa0');
+  sky.addColorStop(0.6, '#a0c8e0');
+  sky.addColorStop(1, '#d8e8f0');
+  oc2.fillStyle = sky;
+  oc2.fillRect(0,0,800,350);
+
+  var haze = oc2.createLinearGradient(0,320,0,380);
+  haze.addColorStop(0,'rgba(200,220,230,0)');
+  haze.addColorStop(1,'rgba(200,220,230,0.5)');
+  oc2.fillStyle = haze;
+  oc2.fillRect(0,320,800,60);
+
+  var gnd = oc2.createLinearGradient(0,350,0,600);
+  gnd.addColorStop(0,'#5a8040');
+  gnd.addColorStop(0.4,'#486030');
+  gnd.addColorStop(1,'#304020');
+  oc2.fillStyle = gnd;
+  oc2.fillRect(0,350,800,250);
+
+  oc2.fillStyle = '#1a2f10';
+  for (var i = 0; i < 18; i++) {
+    var tx = rng() * 900 - 50;
+    var th = 60 + rng() * 100;
+    var ty = 310 - th * 0.5;
+    var tw = 20 + rng() * 30;
+    oc2.fillRect(tx - tw*0.1, ty + th*0.5, tw*0.2, th*0.5);
+    oc2.beginPath();
+    oc2.ellipse(tx, ty + th*0.3, tw*0.5, th*0.6, 0, 0, Math.PI*2);
+    oc2.fill();
   }
-  c.lineTo(W,H);c.lineTo(0,H);c.closePath();c.fill();
-  for(let i=0;i<22;i++){
-    const tx=rng()*W,ty=H*(0.49+rng()*0.08),th=H*(0.07+rng()*0.09),tw=th*(0.22+rng()*0.12);
-    c.fillStyle=`rgba(18,52,12,${0.45+rng()*0.45})`;
-    c.beginPath();c.moveTo(tx,ty-th);c.lineTo(tx-tw,ty);c.lineTo(tx+tw,ty);c.closePath();c.fill();
-    c.fillStyle=`rgba(40,25,10,${0.5+rng()*0.3})`;
-    c.fillRect(tx-tw*0.12,ty,tw*0.24,th*0.3);
+
+  var id = oc2.getImageData(0,0,800,600);
+  var dat = id.data;
+  var nrng = mulberry32(99);
+  for (var i = 0; i < dat.length; i += 4) {
+    var n = (nrng() - 0.5) * 20;
+    dat[i]   = Math.max(0, Math.min(255, dat[i]   + n));
+    dat[i+1] = Math.max(0, Math.min(255, dat[i+1] + n));
+    dat[i+2] = Math.max(0, Math.min(255, dat[i+2] + n));
   }
-  const id=c.getImageData(0,0,W,H),px=id.data,nrng=makePRNG(13);
-  for(let i=0;i<px.length;i+=4){
-    const n=(nrng()-0.5)*18;
-    px[i]=Math.max(0,Math.min(255,px[i]+n));
-    px[i+1]=Math.max(0,Math.min(255,px[i+1]+n));
-    px[i+2]=Math.max(0,Math.min(255,px[i+2]+n));
-  }
-  c.putImageData(id,0,0);
-  const vig=c.createRadialGradient(W/2,H/2,H*0.18,W/2,H/2,Math.max(W,H)*0.72);
-  vig.addColorStop(0,'rgba(0,0,0,0)');vig.addColorStop(1,'rgba(0,0,0,0.30)');
-  c.fillStyle=vig;c.fillRect(0,0,W,H);
+  oc2.putImageData(id, 0, 0);
   return oc;
 }
 
-function makeDemoData(){
-  const FPS=60,DUR=25,N=DUR*FPS,rng=makePRNG(42);
-  const fixList=[];let totalMs=0;
-  while(totalMs<DUR*1000+800){
-    fixList.push({x:(rng()-0.5)*22,y:(rng()-0.5)*15,durMs:160+rng()*380});
-    totalMs+=fixList[fixList.length-1].durMs+55;
+// Build demo data
+function buildDemoData() {
+  demoMode = true;
+  nFrames = 200;
+  frameDt = 1/20;
+  FOV_X_MIN = -15; FOV_X_MAX = 25;
+  FOV_Y_MIN = -10; FOV_Y_MAX = 20;
+  PPD = 20;
+  computeBaseOffsets();
+
+  var rng = mulberry32(7);
+  nUnits = 30;
+
+  var rfx = [], rfy = [], rfr_a = [];
+  for (var u = 0; u < nUnits; u++) {
+    rfx.push(8  + rng() * 12);
+    rfy.push(1  + rng() * 12);
+    rfr_a.push(0.15 + rng() * 0.2);
   }
-  const gazeX=new Float32Array(N),gazeY=new Float32Array(N),inSac=new Uint8Array(N);
-  let frame=0,fi=0,px=0,py=0;
-  while(frame<N&&fi<fixList.length){
-    const fix=fixList[fi],dx=fix.x-px,dy=fix.y-py,dist=Math.sqrt(dx*dx+dy*dy);
-    const sacFrames=Math.max(2,Math.round((28+dist*1.4)/1000*FPS));
-    const fixFrames=Math.round(fix.durMs/1000*FPS);
-    for(let f=0;f<sacFrames&&frame<N;f++,frame++){
-      const t=f/sacFrames,sf=t*t*(3-2*t);
-      gazeX[frame]=px+sf*dx;gazeY[frame]=py+sf*dy;inSac[frame]=1;
+
+  gazeX = new Float32Array(nFrames);
+  gazeY = new Float32Array(nFrames);
+
+  var fixations = [
+    {x: 2.0, y: 1.0, dur: 50},
+    {x:-2.5, y:-1.5, dur: 40},
+    {x: 5.0, y: 2.5, dur: 45},
+    {x:-1.0, y: 3.0, dur: 35},
+    {x: 3.5, y:-2.0, dur: 30}
+  ];
+  var f = 0;
+  for (var fi = 0; fi < fixations.length && f < nFrames; fi++) {
+    var fix = fixations[fi];
+    var end = Math.min(f + fix.dur, nFrames);
+    for (var i = f; i < end; i++) {
+      gazeX[i] = fix.x + (rng()-0.5) * 0.3;
+      gazeY[i] = fix.y + (rng()-0.5) * 0.3;
     }
-    for(let f=0;f<fixFrames&&frame<N;f++,frame++){
-      gazeX[frame]=fix.x+(rng()-0.5)*0.18;gazeY[frame]=fix.y+(rng()-0.5)*0.18;inSac[frame]=0;
-    }
-    px=fix.x;py=fix.y;fi++;
+    f = end;
   }
-  const N_UNITS=20,units=[];
-  for(let i=0;i<N_UNITS;i++){
-    units.push({uid:i,rf_x:11+rng()*10,rf_y:10+rng()*4,rf_r:0.7+rng()*0.75});
-  }
-  const sacLand=[];
-  for(let i=1;i<N;i++)if(inSac[i-1]&&!inSac[i])sacLand.push(i);
-  const firingRates={};
-  for(const unit of units){
-    const r=new Float32Array(N).fill(0.08+rng()*0.06);
-    for(const landF of sacLand){
-      const amp=0.3+rng()*0.65,jitter=Math.round((rng()-0.5)*4);
-      const onset=Math.max(0,landF+jitter);
-      for(let f=onset;f<N;f++){
-        const dt=(f-onset)/FPS;
-        r[f]+=amp*Math.exp(-dt/0.12);
-        if(dt>1.5)break;
+  while (f < nFrames) { gazeX[f] = 0; gazeY[f] = 0; f++; }
+
+  firingRates = new Float32Array(nUnits * nFrames);
+  globalMaxFR = 1;
+
+  for (var u = 0; u < nUnits; u++) {
+    var spont = 5 + rng() * 10;
+    var raw = new Float32Array(nFrames);
+    for (var i = 0; i < nFrames; i++) raw[i] = spont + rng() * 3;
+    for (var i = 1; i < nFrames; i++) {
+      var dgx = gazeX[i]-gazeX[i-1], dgy = gazeY[i]-gazeY[i-1];
+      var dg = Math.sqrt(dgx*dgx + dgy*dgy);
+      if (dg > 0.5) {
+        var burst = 40 + rng() * 120;
+        var lat = Math.floor(2 + rng() * 4);
+        var dur = Math.floor(4 + rng() * 6);
+        for (var j = lat; j < lat + dur && i+j < nFrames; j++) {
+          raw[i+j] = Math.max(raw[i+j], burst * Math.exp(-0.5 * Math.pow((j-lat-1)/2, 2)));
+        }
       }
     }
-    gaussSmooth(r,6);
-    for(let i=0;i<N;i++)r[i]=Math.max(0,r[i]);
-    let peak=0;for(let i=0;i<N;i++)if(r[i]>peak)peak=r[i];
-    if(peak>0)for(let i=0;i<N;i++)r[i]/=peak;
-    firingRates[unit.uid]=r;
-  }
-  return{FPS,N,image_width_deg:DEFAULT_IMG_W,image_height_deg:DEFAULT_IMG_H,
-         gaze_x:gazeX,gaze_y:gazeY,units,firing_rates:firingRates,_demo:true};
-}
-
-async function loadData(){
-  try{
-    const resp=await fetch('./lgn_animation_data.json');
-    if(!resp.ok)throw new Error('not found');
-    const json=await resp.json();
-    const N=json.gaze.length;
-    const FPS=Math.round(N/(json.t_end-json.t_start));
-    const gaze_x=new Float32Array(json.gaze.map(g=>g.x));
-    const gaze_y=new Float32Array(json.gaze.map(g=>g.y));
-    const firingRates={};
-    for(const[uid,arr]of Object.entries(json.firing_rates)){
-      firingRates[parseInt(uid)]=new Float32Array(arr);
+    var smooth = gaussSmooth(raw, 2);
+    for (var i = 0; i < nFrames; i++) {
+      var v = Math.max(0, smooth[i]);
+      firingRates[u * nFrames + i] = v;
+      if (v > globalMaxFR) globalMaxFR = v;
     }
-    return{FPS,N,image_width_deg:json.image_width_deg||DEFAULT_IMG_W,
-           image_height_deg:json.image_height_deg||DEFAULT_IMG_H,
-           gaze_x,gaze_y,units:json.units,firing_rates:firingRates,
-           image_data_url:json.image_data_url||null,image_url:json.image_url||null,_demo:false};
-  }catch(_){return null;}
+  }
+
+  rfCx = new Float32Array(nUnits);
+  rfCy = new Float32Array(nUnits);
+  rfR  = new Float32Array(nUnits);
+  for (var u = 0; u < nUnits; u++) {
+    rfCx[u] = CW/2 + rfx[u] * PPD;
+    rfCy[u] = CH/2 - rfy[u] * PPD;
+    rfR[u]  = Math.max(5, rfr_a[u] * PPD);
+  }
+
+  bgImage = makeDemoImage();
+  tl.max = nFrames - 1;
+  statusEl.textContent =
+    'Demo — place lgn_animation_data.json beside this file to load real data  |  '+
+    nUnits+' synthetic units  |  '+(nFrames * frameDt).toFixed(1)+' s';
 }
 
-async function loadImage(data){
-  const src=data.image_data_url||data.image_url||null;
-  if(!src)return null;
-  return new Promise(resolve=>{
-    const img=new Image();
-    img.onload=()=>resolve(img);
-    img.onerror=()=>resolve(null);
-    img.src=src;
+// Load real JSON
+function loadRealData(json) {
+  return new Promise(function(resolve, reject) {
+    demoMode = false;
+    nFrames  = json.gaze_x_deg.length;
+    frameDt  = (json.meta && json.meta.frame_dt_s) ? json.meta.frame_dt_s : 0.05;
+
+    var fov = json.image_fov_deg;
+    FOV_X_MIN = fov.x_min; FOV_X_MAX = fov.x_max;
+    FOV_Y_MIN = fov.y_min; FOV_Y_MAX = fov.y_max;
+    PPD = (json.image_width_px || 800) / (FOV_X_MAX - FOV_X_MIN);
+    computeBaseOffsets();
+
+    gazeX = new Float32Array(json.gaze_x_deg);
+    gazeY = new Float32Array(json.gaze_y_deg);
+
+    var centers = json.rf_centers;
+    nUnits = centers.length;
+    rfCx = new Float32Array(nUnits);
+    rfCy = new Float32Array(nUnits);
+    rfR  = new Float32Array(nUnits);
+    for (var u = 0; u < nUnits; u++) {
+      var c = centers[u];
+      rfCx[u] = CW/2 + c.x * PPD;
+      rfCy[u] = CH/2 - c.y * PPD;
+      rfR[u]  = Math.max(4, c.radius_deg * PPD);
+    }
+
+    globalMaxFR = 1e-9;
+    firingRates = new Float32Array(nUnits * nFrames);
+    for (var u = 0; u < nUnits; u++) {
+      var row = json.firing_rates[u];
+      for (var f = 0; f < nFrames; f++) {
+        var v = row[f] || 0;
+        firingRates[u * nFrames + f] = v;
+        if (v > globalMaxFR) globalMaxFR = v;
+      }
+    }
+
+    var fmt = json.image_format || 'jpeg';
+    var dataUrl = 'data:image/' + fmt + ';base64,' + json.image_base64;
+    var img = new Image();
+    img.onload = function() {
+      createImageBitmap(img).then(function(bmp) {
+        bgImage = bmp;
+        tl.max = nFrames - 1;
+        var dur = (nFrames * frameDt).toFixed(1);
+        var sess = (json.meta && json.meta.session) ? json.meta.session : 'Real data';
+        statusEl.textContent =
+          sess + '  |  ' + nUnits + ' units  |  ' + dur +
+          ' s  |  max FR = ' + globalMaxFR.toFixed(0) + ' spk/s';
+        resolve();
+      });
+    };
+    img.onerror = function() { reject(new Error('image decode failed')); };
+    img.src = dataUrl;
   });
 }
 
-function drawFrame(frame){
-  const gx=DATA.gaze_x[frame],gy=DATA.gaze_y[frame];
-  ctx.fillStyle='#000';ctx.fillRect(0,0,CW,CH);
-  if(IMG)ctx.drawImage(IMG,-gx*S,gy*S,CW,CH);
-  for(const unit of DATA.units){
-    const cx=CW/2+unit.rf_x*S,cy=CH/2-unit.rf_y*S;
-    const rad=Math.max(3,unit.rf_r*S);
-    const fr=DATA.firing_rates[unit.uid];
-    const norm=fr?fr[frame]:0;
-    const[r,g,b]=rateColor(norm);
-    const alpha=0.45+0.55*norm;
-    ctx.beginPath();ctx.arc(cx,cy,rad,0,2*Math.PI);
-    ctx.globalAlpha=norm*0.22;ctx.fillStyle=`rgb(${r},${g},${b})`;ctx.fill();
-    ctx.globalAlpha=alpha;ctx.strokeStyle=`rgb(${r},${g},${b})`;ctx.lineWidth=1.5;ctx.stroke();
-    ctx.globalAlpha=1;
-  }
-  const CS=9;
-  ctx.strokeStyle='rgba(255,255,255,0.72)';ctx.lineWidth=1;
-  ctx.beginPath();
-  ctx.moveTo(CW/2-CS,CH/2);ctx.lineTo(CW/2+CS,CH/2);
-  ctx.moveTo(CW/2,CH/2-CS);ctx.lineTo(CW/2,CH/2+CS);
-  ctx.stroke();
-  ctx.beginPath();ctx.arc(CW/2,CH/2,2,0,2*Math.PI);
-  ctx.fillStyle='rgba(255,255,255,0.80)';ctx.fill();
+// Init
+function init() {
+  statusEl.textContent = 'Loading…';
+  fetch('./lgn_animation_data.json')
+    .then(function(r) {
+      if (!r.ok) throw new Error('not found');
+      return r.json();
+    })
+    .then(function(json) {
+      return loadRealData(json);
+    })
+    .then(function() {
+      drawFrame(0);
+    })
+    .catch(function() {
+      buildDemoData();
+      drawFrame(0);
+    });
 }
 
-function loop(now){
-  if(!playing)return;
-  const dur=DATA.N/DATA.FPS;
-  const tLoop=(elapsed+(now-startWall)/1000)%dur;
-  const frame=Math.min(DATA.N-1,Math.floor(tLoop*DATA.FPS));
-  drawFrame(frame);
-  timeStr.textContent=`${tLoop.toFixed(1)} / ${dur.toFixed(0)} s`;
-  scrub.value=Math.round(tLoop/dur*1000);
-  rafId=requestAnimationFrame(loop);
-}
-
-function play(){startWall=performance.now();playing=true;playBtn.innerHTML='&#9646;&#9646; Pause';rafId=requestAnimationFrame(loop);}
-function pause(){
-  playing=false;
-  const dur=DATA.N/DATA.FPS;
-  elapsed=(elapsed+(performance.now()-startWall)/1000)%dur;
-  if(rafId)cancelAnimationFrame(rafId);
-  playBtn.innerHTML='&#9654; Play';
-}
-
-(async function init(){
-  statusEl.textContent='Loading…';
-  let data=await loadData(),img=null;
-  if(data){
-    img=await loadImage(data);
-    if(!img){img=makePlaceholderImage();statusEl.textContent=`Real data loaded (${data.units.length} units). Add lgn_scene.jpg to /demos/ for the actual stimulus.`;}
-    else{statusEl.textContent=`${data.units.length} LGN units · Osiris 2024-01-31`;}
-  }else{
-    data=makeDemoData();img=makePlaceholderImage();
-    statusEl.textContent=`Demo — place lgn_animation_data.json in /demos/ for real data. (${data.units.length} synthetic units shown)`;
-  }
-  DATA=data;IMG=img;S=CW/DATA.image_width_deg;
-  drawFrame(0);
-  timeStr.textContent=`0.0 / ${(DATA.N/DATA.FPS).toFixed(0)} s`;
-
-  playBtn.addEventListener('click',()=>{if(playing)pause();else play();});
-  cv.addEventListener('click',()=>{if(playing)pause();else play();});
-  scrub.addEventListener('input',()=>{
-    const dur=DATA.N/DATA.FPS;
-    elapsed=scrub.value/1000*dur;
-    if(!playing){drawFrame(Math.min(DATA.N-1,Math.floor(elapsed*DATA.FPS)));timeStr.textContent=`${elapsed.toFixed(1)} / ${dur.toFixed(0)} s`;}
-    else{startWall=performance.now();}
-  });
-})();
+init();
 </script>
 </body>
 </html>
