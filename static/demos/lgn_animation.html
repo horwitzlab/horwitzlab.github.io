@@ -406,14 +406,17 @@ function loadRealData(json) {
       rfR[u]  = Math.max(4, c.radius_deg * PPD);
     }
 
-    globalMaxFR = 1e-9;
+    // Use pre-normalized rates if available (new format), else normalize raw
+    var ratesSource = json.firing_rates_norm || json.firing_rates;
+    var preNormed = !!json.firing_rates_norm;
+    globalMaxFR = preNormed ? 1 : 1e-9;
     firingRates = new Float32Array(nUnits * nFrames);
     for (var u = 0; u < nUnits; u++) {
-      var row = json.firing_rates[u];
+      var row = ratesSource[u];
       for (var f = 0; f < nFrames; f++) {
-        var v = row[f] || 0;
+        var v = Math.max(0, row[f] || 0);
         firingRates[u * nFrames + f] = v;
-        if (v > globalMaxFR) globalMaxFR = v;
+        if (!preNormed && v > globalMaxFR) globalMaxFR = v;
       }
     }
 
@@ -428,7 +431,7 @@ function loadRealData(json) {
         var sess = (json.meta && json.meta.session) ? json.meta.session : 'Real data';
         statusEl.textContent =
           sess + '  |  ' + nUnits + ' units  |  ' + dur +
-          ' s  |  max FR = ' + globalMaxFR.toFixed(0) + ' spk/s';
+          (preNormed ? ' s  |  per-unit normalized' : ' s  |  max FR = ' + globalMaxFR.toFixed(0) + ' spk/s');
         resolve();
       });
     };
