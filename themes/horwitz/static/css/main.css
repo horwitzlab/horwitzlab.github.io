@@ -671,3 +671,6 @@ a:hover { color: var(--link-hover); text-decoration: underline; }
   font-style: italic;
   margin-top: 0 !important;
 }
+
+/* ── LGN animation frame (narrower than FEF) ────────────────────── */
+.lgn-frame iframe { width: 700px; height: 590px; }
