@@ -116,15 +116,15 @@ var tl      = document.getElementById('timeline');
 var timeLbl = document.getElementById('timeLabel');
 var statusEl= document.getElementById('status');
 
-// Colour scale: black -> cyan -> white
+// Colour scale: black -> red -> orange-white
 function frColor(norm) {
   if (norm <= 0) return 'rgb(0,0,0)';
   if (norm < 0.5) {
     var t = norm * 2;
-    return 'rgb(0,'+Math.round(155*t)+','+Math.round(185*t)+')';
+    return 'rgb('+Math.round(220*t)+',0,0)';
   }
   var t = (norm - 0.5) * 2;
-  return 'rgb('+Math.round(255*t)+','+Math.round(155+100*t)+','+Math.round(185+70*t)+')';
+  return 'rgb(220,'+Math.round(220*t)+','+Math.round(180*t)+')';
 }
 
 // Draw one frame
